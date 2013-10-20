@@ -41,6 +41,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.enable_vds \
     sdm.perf_hint_window=50 \
     ro.opengles.version=196609 \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=1
     
 # Enable Google Assistant
 PRODUCT_PROPERTY_OVERRIDES += \
