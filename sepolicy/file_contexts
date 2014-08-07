@@ -4,9 +4,6 @@
 # Bluetooth
 /efs/bluetooth(/.*)?                                    u:object_r:bluetooth_efs_file:s0
 
-# Bridge
-/system/vendor/bin/bridgemgrd                           u:object_r:bridge_exec:s0
-
 # Camera
 /data/cam_socket.*                                      u:object_r:camera_socket:s0
 /sys/devices/virtual/camera(/.*)?                       u:object_r:sysfs_camera:s0
@@ -58,6 +55,10 @@
 # Sysfs files used by gralloc hal
 /sys/devices/virtual/graphics/fb[0-1]/msm_.*        u:object_r:sysfs_hal_gralloc:s0
 /sys/devices/fd900000.qcom,mdss_mdp/caps            u:object_r:sysfs_hal_gralloc:s0
+
+# Sysfs entry for the RmNet function driver
+/sys/class/android_usb/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0
+/sys/devices/virtual/android_usb/android0/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0 
 
 # TimeKeep
 /system/vendor/bin/timekeep                                    u:object_r:timekeep_exec:s0
