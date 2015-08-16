@@ -66,8 +66,7 @@ on fs
     write /sys/devices/msm_sdcc.1/mmc_host/mmc0/power/control on
     write /sys/devices/msm_sdcc.2/mmc_host/mmc1/power/control on
 
-    mount_all fstab.qcom
-    write /proc/sys/vm/swappiness 100    
+    mount_all fstab.qcom  
     swapon_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
