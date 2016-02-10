@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2016, The CyanogenMod Project
- *           (C) 2017, The LineageOS Project
+ * Copyright (C) 2012-2016, The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,9 +33,6 @@
 #define BACK_CAMERA_ID 0
 #define FRONT_CAMERA_ID 1
 
-#define OPEN_RETRIES    10
-#define OPEN_RETRY_MSEC 40
-
 using namespace android;
 
 static Mutex gCameraWrapperLock;
@@ -59,8 +55,8 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
          .hal_api_version = HARDWARE_HAL_API_VERSION,
          .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "tblte Camera Wrapper",
-         .author = "The LineageOS Project",
+         .name = "LENTIS Camera Wrapper",
+         .author = "The CyanogenMod Project",
          .methods = &camera_module_methods,
          .dso = NULL,
          .reserved = {0},
@@ -592,16 +588,9 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         memset(camera_device, 0, sizeof(*camera_device));
         camera_device->id = camera_id;
 
-        int retries = OPEN_RETRIES;
-        bool retry;
-        do {
-            rv = gVendorModule->common.methods->open(
-                    (const hw_module_t*)gVendorModule, name,
-                    (hw_device_t**)&(camera_device->vendor));
-            retry = --retries > 0 && rv;
-            if (retry)
-                usleep(OPEN_RETRY_MSEC * 1000);
-        } while (retry);
+        rv = gVendorModule->common.methods->open(
+                (const hw_module_t*)gVendorModule, name,
+                (hw_device_t**)&(camera_device->vendor));
         if (rv) {
             ALOGE("Vendor camera open fail");
             goto fail;
