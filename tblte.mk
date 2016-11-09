@@ -240,8 +240,7 @@ PRODUCT_PACKAGES += \
 
 # Samsung symbols
 PRODUCT_PACKAGES += \
-    libsamsung_symbols \
-    libshim_qcopt
+    libshim_ril
     
 # TimeKeep
 PRODUCT_PACKAGES += \
