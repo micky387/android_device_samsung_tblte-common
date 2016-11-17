@@ -80,6 +80,8 @@ TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_CONFIG := apq8084_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tblte
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+TARGET_SM_KERNEL := 4.9
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
