@@ -1368,6 +1368,8 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service olsrd /system/bin/olsrd -f /etc/wifi/olsrd.conf
     class main
     disabled
+service macloader /system/bin/macloader
+    class late_start    
     oneshot
     seclabel u:r:macloader:s0
 
@@ -1387,7 +1389,10 @@ service ril-daemon /system/bin/rild
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio log wakelock qcom_diag      
+    group radio cache inet misc audio log wakelock qcom_diag
+    
+    on property:wlan.driver.status=ok
+    start macloader      
 
 on property:init.svc.macloader=stopped
     chown system root /data/.rev
