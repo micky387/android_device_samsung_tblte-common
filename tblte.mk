@@ -110,8 +110,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/iop_device_list.conf:/system/etc/bluetooth/iop_device_list.conf
 
 # Camera
-TARGET_NEEDS_TEXT_RELOCATIONS := true
-
 PRODUCT_PACKAGES += \
     libxml2 \
     camera.apq8084
