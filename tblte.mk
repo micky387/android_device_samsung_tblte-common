@@ -204,6 +204,13 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1 \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true \
+    persist.camera.cpp.duplication=false \
+    persist.camera.hal.debug.mask=0
+
 # NFC packages
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
