@@ -140,6 +140,9 @@ PRODUCT_PACKAGES += \
     fingerprint.apq8084 \
     validityservice
 
+PRODUCT_PROPERTY_OVERRIDES += \
+fingerprint_enabled=1
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.apq8084
