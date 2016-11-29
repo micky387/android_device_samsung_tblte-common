@@ -90,6 +90,9 @@ TARGET_KERNEL_SOURCE := kernel/samsung/tblte
 KERNEL_TOOLCHAIN := /home/micky387/android/kernel/Toolchain/bin
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 
+# Legacy BLOB Support
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
