@@ -155,6 +155,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
+    
+# IR Blaster
+PRODUCT_PACKAGES += \
+    consumerir.apq8084    
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
