@@ -109,6 +109,9 @@ on post-fs
     chmod 666 /dev/mobicore-user
     chown system system /dev/mobicore
     chown radio system /dev/mobicore-user
+    
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpat
 
 on post-fs-data
 
