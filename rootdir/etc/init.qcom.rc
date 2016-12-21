@@ -1308,22 +1308,14 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     user root
     group radio cache inet misc audio log wakelock oem_2901
-    
-    on property:wlan.driver.status=ok
-    start macloader      
-
-on property:init.svc.macloader=stopped
-    chown system root /data/.rev
-    chmod 0664 /data/.rev
-# end of wifi
 
 service macloader /system/bin/macloader
-    class late_start    
+    class main
+    user system
+    group wifi    
     oneshot
-    seclabel u:r:macloader:s0
 
-on property:wlan.driver.status=ok
-    start macloader
+# end of wifi
 
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
