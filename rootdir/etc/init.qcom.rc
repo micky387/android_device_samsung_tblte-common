@@ -763,6 +763,8 @@ on boot
     # LCD ALPM Mode
     chown system system /sys/class/lcd/panel/alpm
     chmod 0660 /sys/class/lcd/panel/alpm
+    chown system system /sys/class/lcd/panel/alpm_backlight
+    chmod 0660 /sys/class/lcd/panel/alpm_backlight
 
     # Auto Brightness
     chown system system  /sys/class/backlight/panel/auto_brightness
