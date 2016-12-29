@@ -403,9 +403,11 @@ on early-boot
 
     # Remove symlinks to avoid issues with migrate after nandroid restores
     # Will be recreated at end of boot
-    rm /data/data/com.android.providers.telephony/databases/telephony.db
-    rm /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
-
+    rm -rf /data/user/0/com.android.providers.telephony/databases
+    rm -rf /data/user/0/com.android.providers.telephony/shared_prefs
+    rm -rf /data/user/0/com.android.providers.telephony/files
+    rm /data/user/0/com.android.providers.telephony/opname.db
+    
 on boot
     # Vibrations
     chown system system /sys/devices/virtual/timed_output/vibrator/enable
@@ -1580,6 +1582,24 @@ on property:sys.boot_completed=1
     # Post boot services
     start mpdecision
 
+# Symlink telephony.db and preferred-apn.xml
+    mkdir /data/user/0/com.android.providers.telephony/databases 0700 radio radio
+    mkdir /data/user/0/com.android.providers.telephony/shared_prefs 0700 radio radio
+    mkdir /data/user/0/com.android.providers.telephony/files 0700 radio radio
+    symlink /data/user_de/0/com.android.providers.telephony/databases/HbpcdLookup.db /data/user/0/com.android.providers.telephony/databases/HbpcdLookup.db
+    symlink /data/user_de/0/com.android.providers.telephony/databases/HbpcdLookup.db-journal /data/user/0/com.android.providers.telephony/databases/HbpcdLookup.db-journal
+    symlink /data/user_de/0/com.android.providers.telephony/databases/mmssms.db /data/user/0/com.android.providers.telephony/databases/mmssms.db
+    symlink /data/user_de/0/com.android.providers.telephony/databases/mmssms.db-journal /data/user/0/com.android.providers.telephony/databases/mmssms.db-journal
+    symlink /data/user_de/0/com.android.providers.telephony/databases/telephony.db /data/user/0/com.android.providers.telephony/databases/telephony.db
+    symlink /data/user_de/0/com.android.providers.telephony/databases/telephony.db-journal /data/user/0/com.android.providers.telephony/databases/telephony.db-journal
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs/build-id.xml /data/user/0/com.android.providers.telephony/shared_prefs/build-id.xml
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs/preferred-apn.xml /data/user/0/com.android.providers.telephony/shared_prefs/preferred-apn.xml
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs/telephonyprovider.xml /data/user/0/com.android.providers.telephony/shared_prefs/telephonyprovider.xml
+    
+    symlink /data/user_de/0/com.android.providers.telephony/preferred-apn.xml /data/user/0/com.android.providers.telephony/preferred-apn.xml
+    symlink /data/user_de/0/com.android.providers.telephony/telephony.db /data/user/0/com.android.providers.telephony/telephony.db
+    symlink /data/user_de/0/com.android.providers.telephony/opname.db /data/user/0/com.android.providers.telephony/opname.db
+
 service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
     class late_start
     user root
@@ -1590,12 +1610,6 @@ service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  1
-
-    # Symlink telephony.db and preferred-apn.xml
-    mkdir /data/data/com.android.providers.telephony/databases 0700 radio radio
-    mkdir /data/data/com.android.providers.telephony/shared_prefs 0700 radio radio
-    symlink /data/data/user/0/com.android.providers.telephony/databases/telephony.db /data/data/com.android.providers.telephony/databases/telephony.db
-    symlink /data/data/user/0/com.android.providers.telephony/shared_prefs/preferred-apn.xml /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
 
 service charger /charger
     class charger
