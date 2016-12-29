@@ -172,5 +172,3 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 
 # Disable dex-preoptimization
 WITH_DEXPREOPT := false
-
-BLOCK_BASED_OTA := false
