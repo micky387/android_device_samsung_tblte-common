@@ -71,9 +71,6 @@ TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
-# IR Blaster
-BOARD_USES_MS_IR_SIGNAL := true
-
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3b7 dwc3_msm.cpu_to_affin=1
