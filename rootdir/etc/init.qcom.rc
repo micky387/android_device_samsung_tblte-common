@@ -55,6 +55,8 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+    write /proc/sys/vm/page-cluster 0
+
 on fs
     write /sys/devices/msm_sdcc.1/mmc_host/mmc0/power/control on
     write /sys/devices/msm_sdcc.2/mmc_host/mmc1/power/control on
