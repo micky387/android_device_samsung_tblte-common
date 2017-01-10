@@ -141,6 +141,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 fingerprint_enabled=1
 
+# Gello
+PRODUCT_PACKAGES += Gello
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.apq8084
