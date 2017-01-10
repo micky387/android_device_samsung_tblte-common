@@ -658,6 +658,10 @@ on boot
     chown radio system /sys/class/devfreq/0.qcom,cpubw/min_freq
     chmod 664 /sys/class/devfreq/0.qcom,cpubw/min_freq
 
+    # for VR Performance
+    chown system system /sys/class/kgsl/kgsl-3d0/dispatch/inflight
+    chmod 0664  /sys/class/kgsl/kgsl-3d0/dispatch/inflight
+
     # Change interactive sysfs permission
     chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
