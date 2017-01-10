@@ -1500,13 +1500,13 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
 
-    write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/module/msm_thermal/parameters/enabled "Y"
-    write /sys/module/msm_thermal/parameters/limit_temp_degC 78
-
-    write /sys/module/cpu_boost/parameters/sync_threshold 1497600
+    for devfreq_gov in /sys/class/devfreq/qcom,cpubw*/governor
+    do
+        echo "cpubw_hwmon" > $devfreq_gov
+    done
 
     # Configure the cpu-boost module
+    write /sys/module/cpu_boost/parameters/sync_threshold 1497600
     write /sys/module/cpu_boost/parameters/boost_ms 10
     write /sys/module/cpu_boost/parameters/input_boost_freq 0
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
@@ -1628,11 +1628,15 @@ on property:sys.boot_completed=1
     #start mpdecision
     rm /data/system/perfd/default_values
 
-    # Enable msm hotplug for boot
-    write /sys/module/msm_hotplug/msm_enabled 1
-    write /sys/module/msm_hotplug/cpus_boosted 2
-    write /sys/module/msm_hotplug/max_cpus_online 4
-    write /sys/module/msm_hotplug/min_cpus_online 2
+    # Enable intelli-thermal for boot
+    write /sys/module/msm_thermal/parameters/enabled 1
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/parameters/core_control_mask 12
+    write /sys/module/msm_thermal/parameters/freq_control_mask 15
+    write /sys/module/msm_thermal/parameters/limit_temp_degC 80
+    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 85
+
+    chmod 777 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
     
     # Symlink telephony.db and preferred-apn.xml
     mkdir /data/user/0/com.android.providers.telephony/databases 0700 radio radio
