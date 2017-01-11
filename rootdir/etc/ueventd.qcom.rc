@@ -44,11 +44,13 @@
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
-/dev/ciq_bridge		  0660   system     system
+
+#permissions for CIQ
+/dev/smd4_bridge          0660   system     system
 
 /dev/radio0               0640   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
-/dev/ttyUSB0              0660   radio	    radio
+/dev/ttyUSB0              0660   radio      radio
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
 /dev/smdcntl2             0640   radio      radio
@@ -106,7 +108,7 @@
 /dev/jpeg1                0660   system     camera
 /dev/jpeg2                0660   system     camera
 /dev/adsprpc-smd          0664   system     system
-/dev/msm_camera*          0660   system     camera
+/dev/msm_camera/*         0660   system     camera
 /dev/gemini/              0660   system     camera
 /dev/mercury0             0660   system     camera
 /dev/msm_vidc_reg         0660   system     audio
@@ -142,6 +144,7 @@
 /dev/msm_preproc_ctl      0660   system     audio
 /dev/msm_rtac             0660   system     audio
 /dev/msm_voicememo        0660   system     audio
+/dev/radio0               0640   fm_radio   fm_radio
 /dev/smd3                 0660   bluetooth  net_bt_stack
 /dev/smd2                 0660   bluetooth  net_bt_stack
 /dev/ttyHSL1              0660   system     system
@@ -152,6 +155,8 @@
 /dev/tty_sdio_00          0660   system     system
 /dev/ttyGS0               0660   system     system
 /dev/i2c-5                0660   media       media
+/dev/voice_svc            0660   system     audio
+/dev/avtimer              0660   system     audio
 
 # Fingerprint
 /dev/vfsspi               0660   system     system
