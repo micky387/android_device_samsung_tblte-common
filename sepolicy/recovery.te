@@ -1,0 +1,2 @@
+allow recovery tmpfs:dir { getattr read open write add_name remove_name rmdir};
+allow recovery device:file { create write open unlink relabelfrom relabelto};
