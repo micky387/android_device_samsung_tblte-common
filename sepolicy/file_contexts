@@ -46,6 +46,10 @@
 /data/data/data_usage_rx                                 	u:object_r:radio_data_file:s0
 /data/data/data_usage_tx                                 	u:object_r:radio_data_file:s0
 
+# Qualcomm MSM Audio devices
+/dev/msm_acdb                          u:object_r:audio_device:s0
+/dev/msm_rtac                          u:object_r:audio_device:s0
+
 # RIL
 /data/data/com.android.providers.telephony/databases(/.*)?     u:object_r:radio_data_file:s0
 /data/data/com.android.providers.telephony/shared_prefs(/.*)?  u:object_r:radio_data_file:s0
