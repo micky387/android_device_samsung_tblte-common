@@ -1,3 +1,7 @@
+#Battery
+/sys/devices/battery.2/power_supply/battery/capacity    u:object_r:sysfs_batteryinfo:s0
+/sys/devices/battery.2/power_supply/battery/temp        u:object_r:sysfs_batteryinfo:s0
+
 /data/system/default_values					u:object_r:mpctl_data_file:s0
 
 /dev/batch_io							u:object_r:io_device:s0
