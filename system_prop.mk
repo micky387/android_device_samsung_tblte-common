@@ -1,6 +1,6 @@
 # Art
 PRODUCT_PROPERTY_OVERRIDES += \
-dalvik.vm.dex2oat-swap=false
+    dalvik.vm.dex2oat-swap=false
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -29,7 +29,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=1 \
     ro.secwvk=144 \
     ro.sf.lcd_density=560 \
-    ro.opengles.version=196609
+    debug.egl.hw=1 \
+    debug.sf.hw=1 \
+    debug.gralloc.enable_fb_ubwc=1 \
+    persist.hwc.enable_vds \
+    sdm.perf_hint_window=50 \
+    ro.opengles.version=196609 \
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
