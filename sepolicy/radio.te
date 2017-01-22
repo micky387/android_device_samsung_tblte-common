@@ -1,0 +1,2 @@
+allow radio self:process ptrace;
+allow radio system_app_data_file:dir getattr;

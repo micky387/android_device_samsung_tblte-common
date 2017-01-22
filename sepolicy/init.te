@@ -10,3 +10,4 @@ allow init cache_block_device:blk_file rw_file_perms;
 allow init cgroup:dir create_dir_perms;
 allow init debugfs:file write;
 allow init radio_data_file:lnk_file read;
+allow init sysfs_ss_writable:lnk_file read;

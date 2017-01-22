@@ -5,6 +5,7 @@ allow healthd sysfs_writable:file read;
 allow healthd sysfs_writable:file open;
 # offmode charging
 allow healthd device:dir r_dir_perms;
+allow healthd device:dir rw_dir_perms;
 allow healthd tmpfs:dir { add_name write };
 allow healthd device:chr_file { create };
 allow healthd device:dir { write };

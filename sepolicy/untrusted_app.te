@@ -5,3 +5,10 @@ allow untrusted_app cm_status_bar_service:service_manager find;
 allow untrusted_app sysfs:file read;
 allow untrusted_app configfs:dir read;
 allow untrusted_app app_data_file:dir search;
+
+allow untrusted_app rootfs:dir read;
+allow untrusted_app firmware_file:dir read;
+allow untrusted_app rootfs:dir open;
+allow untrusted_app firmware_file:dir open;
+allow untrusted_app cgroup:dir read;
+allow untrusted_app cgroup:dir open;
