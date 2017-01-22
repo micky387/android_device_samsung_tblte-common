@@ -463,9 +463,6 @@
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <!--bool name="config_samsung_stk">true</bool-->
 
-    <!-- enable doze powersaving mode -->
-    <bool name="config_enableAutoPowerModes">true</bool>
-
     <!-- SD card is hot-pluggable on this device -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
