@@ -84,8 +84,8 @@ TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_CONFIG := micky387_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tblte
-KERNEL_TOOLCHAIN := /home/micky387/android/kernel/Toolchain/bin
-KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 #Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
