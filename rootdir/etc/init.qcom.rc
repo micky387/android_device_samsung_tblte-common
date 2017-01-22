@@ -1366,12 +1366,16 @@ service qmuxd /system/bin/qmuxd
     group radio audio bluetooth gps diag log
 
 service mdm_helper /system/bin/mdm_helper
+    user root
+    group root system wakelock radio
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
     disabled
 
 service mdm_helper_proxy /system/bin/mdm_helper_proxy
     class core
+    user system
+    group system wakelock
     disabled
 
 on property:init.svc.ril-daemon=running
