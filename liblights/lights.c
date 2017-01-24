@@ -21,10 +21,12 @@
 #include <cutils/log.h>
 
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <malloc.h>
 #include <pthread.h>
 
 #include <sys/ioctl.h>
@@ -128,7 +130,7 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(struct light_device_t* dev,
+set_light_backlight(struct light_device_t *dev,
         struct light_state_t const* state)
 {
     int err = 0;
@@ -144,7 +146,7 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-set_speaker_light_locked(struct light_device_t* dev,
+set_speaker_light_locked(struct light_device_t *dev,
         struct light_state_t const* state)
 {
     int red, green, blue;
@@ -215,7 +217,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 }
 
 static void
-handle_speaker_battery_locked(struct light_device_t* dev)
+handle_speaker_battery_locked(struct light_device_t *dev)
 {
     if (is_lit(&g_battery)) {
         set_speaker_light_locked(dev, &g_battery);
@@ -225,7 +227,7 @@ handle_speaker_battery_locked(struct light_device_t* dev)
 }
 
 static int
-set_light_battery(struct light_device_t* dev,
+set_light_battery(struct light_device_t *dev,
         struct light_state_t const* state)
 {
     pthread_mutex_lock(&g_lock);
@@ -236,7 +238,7 @@ set_light_battery(struct light_device_t* dev,
 }
 
 static int
-set_light_notifications(struct light_device_t* dev,
+set_light_notifications(struct light_device_t *dev,
         struct light_state_t const* state)
 {
     pthread_mutex_lock(&g_lock);
@@ -247,7 +249,7 @@ set_light_notifications(struct light_device_t* dev,
 }
 
 static int
-set_light_attention(struct light_device_t* dev,
+set_light_attention(struct light_device_t *dev,
         struct light_state_t const* state)
 {
     pthread_mutex_lock(&g_lock);
@@ -262,7 +264,7 @@ set_light_attention(struct light_device_t* dev,
 }
 
 static int
-set_light_buttons(struct light_device_t* dev,
+set_light_buttons(struct light_device_t *dev,
         struct light_state_t const* state)
 {
     int err = 0;
@@ -298,7 +300,7 @@ close_lights(struct light_device_t *dev)
 static int open_lights(const struct hw_module_t* module, char const* name,
         struct hw_device_t** device)
 {
-    int (*set_light)(struct light_device_t* dev,
+    int (*set_light)(struct light_device_t *dev,
             struct light_state_t const* state);
 
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
