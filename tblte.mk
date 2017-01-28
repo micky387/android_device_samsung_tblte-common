@@ -34,6 +34,9 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1601
 
+PRODUCT_PROPERTY_OVERRIDES += 	dalvik.vm.heapgrowthlimit=256m \
+				                persist.radio.apm_sim_not_pwdn=1
+
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
@@ -141,7 +144,6 @@ fingerprint_enabled=1
 
 # Gello
 PRODUCT_PACKAGES += Gello
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.apq8084
