@@ -1,2 +1,2 @@
 allow shell su:process signal;
-
+allow shell rild_exec:file { execute execute_no_trans getattr open read };

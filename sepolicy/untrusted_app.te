@@ -13,3 +13,4 @@ allow untrusted_app rootfs:dir open;
 allow untrusted_app firmware_file:dir open;
 allow untrusted_app cgroup:dir read;
 allow untrusted_app cgroup:dir open;
+allow untrusted_app mnt_media_rw_file:dir getattr;
