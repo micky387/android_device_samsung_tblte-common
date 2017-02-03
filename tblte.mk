@@ -243,6 +243,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols \
     libshim_qcopt
+    
+# TimeKeep
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep    
 
 # Torch
 PRODUCT_PACKAGES += \

@@ -1343,10 +1343,11 @@ service sensorhubservice /system/bin/sensorhubservice
     user system
     group input
 
-service time_daemon /system/bin/time_daemon
-    class main
+service timekeep /system/bin/timekeep restore
+    class late_start
     user root
     group root
+    oneshot
 
 service audiod /system/bin/audiod
     class late_start
