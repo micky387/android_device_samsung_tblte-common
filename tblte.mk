@@ -34,8 +34,7 @@ PRODUCT_AAPT_PREBUILT_DPI := 560dpi xxhdpi xhdpi hdpi
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1601
 
-PRODUCT_PROPERTY_OVERRIDES += 	dalvik.vm.heapgrowthlimit=256m \
-				                persist.radio.apm_sim_not_pwdn=1
+PRODUCT_PROPERTY_OVERRIDES += 	dalvik.vm.heapgrowthlimit=256m
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
