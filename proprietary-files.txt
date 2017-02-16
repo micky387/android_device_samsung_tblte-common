@@ -415,7 +415,6 @@ lib/hw/sensorhubs.apq8084.so
 # Time services
 bin/time_daemon
 -app/TimeService/TimeService.apk
-lib/libcommon_time_client.so
 vendor/lib/libTimeService.so
 vendor/lib/libtime_genoff.so
 
