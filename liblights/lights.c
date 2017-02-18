@@ -135,7 +135,7 @@ set_light_backlight(struct light_device_t *dev,
 {
     int err = 0;
     int brightness = rgb_to_brightness(state);
-    if(!dev) {
+    if (!dev) {
         return -1;
     }
     //ALOGE("setting brightness: %d\n", brightness);
@@ -154,7 +154,7 @@ set_speaker_light_locked(struct light_device_t *dev,
     int onMS, offMS;
     unsigned int colorRGB;
 
-    if(!dev) {
+    if (!dev) {
         return -1;
     }
 
@@ -270,7 +270,7 @@ set_light_buttons(struct light_device_t *dev,
     int err = 0;
     int on = is_lit(state);
 
-    if(!dev) {
+    if (!dev) {
         return -1;
     }
     pthread_mutex_lock(&g_lock);
