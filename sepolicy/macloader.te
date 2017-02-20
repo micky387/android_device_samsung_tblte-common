@@ -18,3 +18,4 @@ allow macloader efs_file:dir search;
 allow macloader wifi_efs_file:dir search;
 allow macloader sysfs_wifi_nv_path:file { open write };
 allow macloader system_data_file:dir { add_name search write };
+allow macloader sysfs:file rw_file_perms;
