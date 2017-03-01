@@ -118,3 +118,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # AptX
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.bt.enableAptXHD=true
+
+# Allow tethering without provisioning app
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tethering.noprovisioning=true
