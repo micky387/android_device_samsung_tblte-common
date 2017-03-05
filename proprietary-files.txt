@@ -412,12 +412,6 @@ lib/libsensorhub.so
 lib/libsensorhubservice.so
 lib/hw/sensorhubs.apq8084.so
 
-# Time services
-bin/time_daemon
--app/TimeService/TimeService.apk
-vendor/lib/libTimeService.so
-vendor/lib/libtime_genoff.so
-
 # Wi-Fi
 bin/olsrd
 etc/wifi/bcmdhd_apsta.bin

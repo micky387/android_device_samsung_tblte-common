@@ -148,9 +148,6 @@ BOARD_SEPOLICY_DIRS += \
 # Superuser
 WITH_SU := true
 
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
-
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
