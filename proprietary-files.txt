@@ -423,10 +423,14 @@ etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_mfg.txt_a0
 etc/wifi/nvram_mfg.txt_a0_r10
 etc/wifi/nvram_mfg.txt_r10
+etc/wifi/nvram_mfg.txt_wisol
+etc/wifi/nvram_mfg.txt_wisol_r10
 etc/wifi/nvram_net.txt
 etc/wifi/nvram_net.txt_a0
 etc/wifi/nvram_net.txt_a0_r10
 etc/wifi/nvram_net.txt_r10
+etc/wifi/nvram_net.txt_wisol
+etc/wifi/nvram_net.txt_wisol_r10
 etc/wifi/olsrd.conf
 etc/wifi/p2p_supplicant_overlay.conf
 etc/wifi/wpa_supplicant.conf
