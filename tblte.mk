@@ -248,10 +248,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Torch
 
-# Time for RIL
-PRODUCT_PACKAGES += \
-    libtime_genoff
-
 # WiFi packages
 PRODUCT_PACKAGES += \
     libnetcmdiface \
