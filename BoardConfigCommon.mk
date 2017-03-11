@@ -147,9 +147,6 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     device/samsung/tblte-common/sepolicy
 
-# Superuser
-WITH_SU := true
-
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
