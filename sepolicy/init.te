@@ -1,13 +1,11 @@
 allow init debugfs:dir mounton;
-allow init debugfs:file write;
-allow init lcd_dev:file { relabelto setattr };
-allow init vibe_dev:file { relabelto setattr };
-allow init keypad_dev:file { relabelto setattr };
+allow init sysfs_display:file { relabelto setattr };
+allow init sysfs_vibeamp:file { relabelto setattr };
+allow init sysfs_sec:file { relabelto setattr };
 allow init diag_device:chr_file unlink;
 allow init tmpfs:lnk_file create_file_perms;
 allow init userdata_block_device:blk_file rw_file_perms;
 allow init cache_block_device:blk_file rw_file_perms;
 allow init cgroup:dir create_dir_perms;
-allow init debugfs:file write;
-allow init radio_data_file:lnk_file read;
 allow init sysfs_ss_writable:lnk_file read;
+allow init socket_device:sock_file create;

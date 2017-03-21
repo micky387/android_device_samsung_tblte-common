@@ -1,10 +1,10 @@
-# Grant access to Qualcomm MSM Interface (QMI) audio sockets to audioserver
-qmux_socket(audioserver)
-
-binder_call(audioserver, rild)
-
-# access files in /sys
-r_dir_file(audioserver, sysfs)
-# connect to rild for phone calls
-allow audioserver rild:unix_stream_socket connectto;
-allow audioserver audioserver:socket { read write create };
+allow audioserver qmuxd_socket:dir search;
+allow audioserver self:socket create;
+allow audioserver qmuxd_socket:dir write;
+allow audioserver self:socket ioctl;
+allow audioserver qmuxd_socket:dir add_name;
+allow audioserver qmuxd_socket:sock_file create;
+allow audioserver qmuxd_socket:sock_file { setattr write };
+allow audioserver self:socket read;
+allow audioserver qmuxd_socket:dir remove_name;
+allow audioserver qmuxd:unix_stream_socket connectto;

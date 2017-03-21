@@ -1,5 +1,5 @@
 allow rild proc_net:file rw_file_perms;
-allow rild self:capability dac_override;
+allow rild self:capability { dac_override dac_read_search };
 allow rild sysfs:file rw_file_perms;
 allow rild tun_device:chr_file rw_file_perms;
 allow rild self:tun_socket create_socket_perms;
@@ -8,18 +8,8 @@ allow rild radio_data_file:file rw_file_perms;
 allow rild radio_data_file:lnk_file r_file_perms;
 allow rild system_app_data_file:dir rw_dir_perms;
 allow rild system_app_data_file:file create_file_perms;
+
 #allow rild rild_data_file:file rw_file_perms;
-allow rild sysfs_sec:file rw_file_perms;
-allow rild radio_data_file:lnk_file read;
-
-# Grant access to Qualcomm MSM Interface (QMI) radio sockets to RILD
-qmux_socket(rild)
 
 
-allow rild time_daemon:unix_stream_socket connectto;
-binder_call(rild, audioserver)
-binder_call(rild, mediaserver)
-binder_use(rild)
-binder_service(rild)
-allow rild audioserver_service:service_manager find;
-allow rild mediaserver_service:service_manager find;
+allow radio self:process ptrace;

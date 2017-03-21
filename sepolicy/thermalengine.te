@@ -1,4 +1,3 @@
-allow thermal-engine self:capability chown;
 allow thermal-engine self:netlink_kobject_uevent_socket create;
 allow thermal-engine self:netlink_kobject_uevent_socket { bind setopt };
 allow thermal-engine self:capability net_admin;
