@@ -97,9 +97,6 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
-# Fix video autoscaling
-TARGET_OMX_LEGACY_RESCALING := true
-
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
