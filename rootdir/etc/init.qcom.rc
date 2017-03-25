@@ -29,8 +29,6 @@ import init.qcom.usb.rc
 import init.qcom.power.rc
 
 on early-init
-    setprop sys.boot_completed 0
-
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
     write /sys/block/mmcblk0/queue/scheduler noop
@@ -50,14 +48,11 @@ on init
 
 
     # Support legacy paths
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
 on fs
-    write /sys/devices/msm_sdcc.1/mmc_host/mmc0/power/control on
-    write /sys/devices/msm_sdcc.2/mmc_host/mmc1/power/control on
-
     mount_all fstab.qcom
+    write /proc/sys/vm/swappiness 100
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -179,14 +174,6 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    # For disabling softkeys *FIXME*
-    chown root system /sys/class/leds/button-backlight/max_brightness
-    chmod 0664 /sys/class/leds/button-backlight/max_brightness
-
-    # Torch
-    chmod 0660 /sys/class/leds/torch-sec1/brightness
-    chown system camera /sys/class/leds/torch-sec1/brightness
-
     # tblte torch
     chmod 0660  /sys/class/camera/flash/rear_flash
     chown system camera  /sys/class/camera/flash/rear_flash
@@ -194,18 +181,6 @@ on post-fs-data
     # Touchscreen
     chmod 0660 /sys/class/input/input2/enabled
     chown system system /sys/class/input/input2/enabled
-
-    # Vibrator
-    chmod 0644 /sys/class/timed_output/vibrator/pwm_value
-    chown root system /sys/class/timed_output/vibrator/pwm_value
-    chmod 0644 /sys/class/timed_output/vibrator/pwm_max
-    chown root system /sys/class/timed_output/vibrator/pwm_max
-    chmod 0644 /sys/class/timed_output/vibrator/pwm_min
-    chown root system /sys/class/timed_output/vibrator/pwm_min
-    chmod 0644 /sys/class/timed_output/vibrator/pwm_default
-    chown root system /sys/class/timed_output/vibrator/pwm_default
-    chmod 0644 /sys/class/timed_output/vibrator/pwm_threshold
-    chown root system /sys/class/timed_output/vibrator/pwm_threshold
 
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
@@ -267,25 +242,16 @@ on post-fs-data
     chown system shell /sys/devices/platform/gpusysfs/gpu_governor
     chown system shell /sys/devices/platform/gpusysfs/fps
 
-
 # MHL
     chown system radio /sys/class/mhl/test_v2
-    chown system radio /sys/class/mhl/connection
-# on userdebug and eng builds, permision change mhl sysfs
-# on property:ro.debuggable=1
+    chown system radio /sys/class/mhl/connection  
+    chmod 0666 /sys/class/mhl/hdcp_status
+    chmod 0666 /sys/class/mhl/test_case
+    chmod 0666 /sys/class/mhl/test_result
     chmod 0666 /sys/class/mhl/timing
     chmod 0666 /sys/class/mhl/swing_v2
-    chmod 0666 /sys/class/mhl/reg_tuning
-    chmod 0666 /sys/class/mhl/reg_set
-    chmod 0666 /sys/class/mhl/test_case
-    chmod 0666 /sys/class/mhl/connection
+    chmod 0666 /sys/class/mhl/swing_v3
 
-
-
-    # Gpio DVS
-    chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
-
-    mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
@@ -316,13 +282,6 @@ on post-fs-data
     chmod 0775 /efs/.files/.dm33
     chmod 0775 /efs/.files/.mp301
 
-    
-
-    # touchkey enable/disable
-
-    chown system system /sys/class/sec/sec_touchkey/keypad_enable
-    chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
-
     # h2k permission
     chmod 0644 /efs/redata.bin
     chown radio radio /efs/h2k.dat
@@ -343,9 +302,6 @@ on post-fs-data
 
     # wifi
     mkdir /efs/wifi 0775 system system
-
-    # Permission for fast dormacy for RIL
-    chown system radio /sys/devices/virtual/sec/bamdmux/waketime
 
     # for TRP/TIS
     write /data/.psm.info 1
@@ -369,8 +325,6 @@ on post-fs-data
     symlink /data/data/com.android.shell/files/bugreports /data/bugreports
 
     # Permissions for svc led
-    chown system system /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/sec/sec_touchkey/brightness
     
     chown system system /sys/class/sec/led/led_r
     chown system system /sys/class/sec/led/led_g
@@ -384,9 +338,6 @@ on post-fs-data
     chown system radio /sys/class/sec/sec_ir/ir_send_result
     chown system system /dev/ice4_dev
     chmod 0660 /dev/ice4_dev
-
-    chown system camera /sys/class/flash/flash/flash_power
-    chmod 660 /sys/class/flash/flash/flash_power
     
     # Create directories for perfd
     mkdir /data/misc/perfd 2755 root system
@@ -420,10 +371,6 @@ on boot
     # Enable intelli-thermal for boot
     write /sys/module/msm_thermal/parameters/enabled 1
     write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/module/msm_thermal/parameters/core_control_mask 12
-    write /sys/module/msm_thermal/parameters/freq_control_mask 15
-    write /sys/module/msm_thermal/parameters/limit_temp_degC 80
-    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 85
 
     # Vibrations
     chown system system /sys/devices/virtual/timed_output/vibrator/enable
@@ -438,29 +385,13 @@ on boot
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuctl/cpu.shares 1024
 
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
-
-    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
-    chown system system /sys/module/sco/parameters/disable_esco
-    chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
-    chmod 0660 /sys/module/bluetooth_power/parameters/power
-    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
     chown bluetooth net_bt_stack /dev/ttyHS0
-    chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
-    chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
     chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
-    chmod 0660 /dev/ttyHS2
-    chown bluetooth bluetooth /dev/ttyHS2
 
     # for BT MAC address
     mkdir /efs/bluetooth 0775 radio system
@@ -471,9 +402,6 @@ on boot
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown radio net_bt_stack /efs/bluetooth/bt_addr
     chmod 0640 /efs/bluetooth/bt_addr
-
-    # Permissions for usb_lock
-    chown system radio /sys/class/android_usb/android0/usb_lock
 
     # misc radio files
     chmod 0664 /data/data/data_usage_rx
@@ -490,16 +418,11 @@ on boot
     chmod 0770 /data/firmware
     chown system system /data/firmware
 
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/device/extldo
-    chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
-
     # bluetooth LPM
     chmod 0220 /proc/bluetooth/sleep/lpm
     chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
-    chmod 0600 /dev/btlock
-    chown bluetooth bluetooth /dev/btlock
 
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -513,23 +436,13 @@ on boot
 
     setprop wifi.interface wlan0
 
-    # Allow QMUX daemon to assign port open wait time
-    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
-
     # 4.3 requires this
     chmod 0644 /proc/cmdline
 
     setprop ro.telephony.call_ring.multiple false
 
-    #Set SUID bit for usbhub
-    chmod 4755 /system/bin/usbhub
-    chmod 755 /system/bin/usbhub_init
-
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
-
-
-    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
@@ -794,26 +707,8 @@ on boot
     chown system system  /sys/class/backlight/panel/auto_brightness
     chmod 0660 /sys/class/backlight/panel/auto_brightness
 
-    # Permissions for TCON
-    chown system system /sys/class/tcon/tcon/lux
-    chown system system /sys/class/tcon/tcon/auto_br
-    chown system media_rw /sys/class/tcon/tcon/mode
-    chown system radio /sys/class/tcon/tcon/black_test
-    chown system radio /sys/class/tcon/tcon/tcon_test
-
     chown system system /sys/class/timed_output/vibrator/enable
-    chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/button-backlight/brightness
-    chown system system /sys/class/leds/jogball-backlight/brightness
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/blue/brightness
-    chown system system /sys/class/leds/red/device/grpfreq
-    chown system system /sys/class/leds/red/device/grppwm
-    chown system system /sys/class/leds/red/device/blink
-    chown system system /sys/class/timed_output/vibrator/enable
-    chown system system /sys/module/sco/parameters/disable_esco
     chown system system /sys/kernel/ipv4/tcp_wmem_min
     chown system system /sys/kernel/ipv4/tcp_wmem_def
     chown system system /sys/kernel/ipv4/tcp_wmem_max
@@ -838,7 +733,6 @@ on boot
 
     # Permissions for InputDevices.
     chown system radio /sys/class/sec/tsp/cmd
-    chown system system /sys/class/sec/sec_touchkey/brightness
     chmod 0660 /sys/class/sec/tsp/input/enabled
     chown system system /sys/class/sec/tsp/input/enabled
 
@@ -847,6 +741,7 @@ on boot
    chown system radio /sys/class/camera/rear/rear_camfw
    chown system radio /sys/class/camera/rear/rear_camfw_full
    chown system radio /sys/class/camera/rear/rear_camfw_load
+   chown system radio /sys/class/camera/rear/rear_latest_module_check
    chown system radio /sys/class/camera/rear/rear_camtype
    chown system radio /sys/class/camera/rear/rear_corever
    chown system radio /sys/class/camera/rear/rear_companionfw_full
@@ -867,7 +762,10 @@ on boot
 
 # Fingerprint_sensor
     chown system radio /sys/class/fingerprint/fingerprint/type_check
-# Accelerometer_sensor
+    chown system radio /sys/class/fingerprint/fingerprint/name
+    chown system radio /sys/class/fingerprint/fingerprint/vendor
+
+    # Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
     chown system radio /sys/class/sensors/accelerometer_sensor/calibration
     chown system radio /sys/class/sensors/accelerometer_sensor/reactive_alert
@@ -1213,8 +1111,6 @@ on boot
     # Permission for HALL IC
     chown system radio /sys/class/sec/sec_key/hall_detect
 
-    write /proc/sys/vm/swappiness 130
-
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
@@ -1228,33 +1124,12 @@ on boot
     chmod 0644 /efs/h2k.dat
     mkdir /data/misc/radio/hatp 0775 radio system
 
-    # Vibetonz
-    chmod 0660 /dev/tspdrv
-    chown root shell /dev/tspdrv
-    chown system system /sys/class/timed_output/vibrator/pwm_value
-    chmod 0660 /sys/class/timed_output/vibrator/pwm_value
-    chown system system /sys/class/timed_output/vibrator/pwm_max
-    chmod 0660 /sys/class/timed_output/vibrator/pwm_max
-    chown system system /sys/class/timed_output/vibrator/pwm_min
-    chmod 0660 /sys/class/timed_output/vibrator/pwm_min
-    chown system system /sys/class/timed_output/vibrator/pwm_default
-    chmod 0660 /sys/class/timed_output/vibrator/pwm_default
-    chown system system /sys/class/timed_output/vibrator/pwm_threshold
-    chmod 0660 /sys/class/timed_output/vibrator/pwm_threshold
-
-    # Panel color temperature
-    chmod 0660 /sys/class/lcd/panel/panel_colors
-    chown system system /sys/class/lcd/panel/panel_colors
-
     # permission for Input Device(Touchkey).
     chmod 0660 /sys/class/input/input1/enabled
     chown system system /sys/class/input/input1/enabled
-    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
-    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
-    chown system radio /sys/class/sec/sec_touchkey/glove_mode
-    chown system radio /sys/class/sec/sec_touchkey/flip_mode
-    chown system radio /sys/class/sec/sec_touchkey/1mm_mode
-    chown system radio /sys/class/sec/sec_touchkey/boost_level
+    chown radio system /sys/class/sec/sec_touchkey/brightness
+    chown radio system /sys/class/sec/sec_touchkey/touchkey_back
+    chown radio system /sys/class/sec/sec_touchkey/touchkey_recent
 
     # permission for Input Device(Wacom).
     chmod 0660 /sys/class/input/input4/enabled
@@ -1304,19 +1179,10 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 
     writepid /dev/cpuset/system-background/tasks
 
-# there seems to be a large philosophical discussion about this daemon.  The consensus seems to
-# be to not enable it http://forum.xda-developers.com/showthread.php?t=1755180 but it's here
-# and selinux can handle it if anyone wants to add it back --fattire
-
-#service gsiff_daemon /system/bin/gsiff_daemon
-#    class late_start
-#    user system
-#    group gps qcom_oncrpc
-
 service qseecomd /system/bin/qseecomd
-    class late_start
+    class core
     user root
-    group system
+    group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
     class main
@@ -1380,7 +1246,7 @@ on property:init.svc.ril-daemon=running
     setprop ro.mdm_helper_proxy_req true
 
 on property:ro.baseband=mdm
-	start mdm_helper
+    start mdm_helper
 
 on property:ro.baseband=mdm2
     insmod /system/lib/modules/mhi.ko
@@ -1424,10 +1290,6 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service olsrd /system/bin/olsrd -f /etc/wifi/olsrd.conf
     class main
     disabled
-service macloader /system/bin/macloader
-    class late_start    
-    oneshot
-    seclabel u:r:macloader:s0
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
@@ -1456,8 +1318,12 @@ on property:init.svc.macloader=stopped
 # end of wifi
 
 service macloader /system/bin/macloader
-    class main
+    class late_start    
     oneshot
+    seclabel u:r:macloader:s0
+
+on property:wlan.driver.status=ok
+    start macloader
 
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
@@ -1468,7 +1334,7 @@ on property:crypto.driver.load=0
      exec /system/bin/rmmod qce.ko
 
 on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler fiops
+    write /sys/block/mmcblk0/queue/scheduler cfq
 
     # Configure the hardware properly
     write /sys/module/lpm_levels/enable_low_power/l2 4
