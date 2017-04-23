@@ -130,7 +130,7 @@ BOARD_RIL_CLASS := ../../../device/samsung/tblte-common/ril
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tblte-common/recovery/recovery_keys.c
-RECOVERY_VARIANT := twrp
+#RECOVERY_VARIANT := twrp
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
