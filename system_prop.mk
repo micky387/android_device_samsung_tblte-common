@@ -1,7 +1,6 @@
 # Art
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false \
-    ro.sys.fw.dex2oat_thread_count=4
+    dalvik.vm.dex2oat-swap=false
 
 # API
 PRODUCT_PROPERTY_OVERRIDES += \
