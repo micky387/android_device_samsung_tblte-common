@@ -410,7 +410,7 @@ lib/libsec-ril.so:vendor/lib/libsec-ril.so|d2cb96b8d0517e8c7f6e934df8807125
 
 # Sensors
 etc/sensors/sensor_def_qcomdev.conf:vendor/etc/sensors/sensor_def_qcomdev.conf
-lib/hw/sensors.apq8084.so:vendor/lib/hw/sensors.apq8084.so
+lib/hw/sensors.apq8084.so:vendor/lib/sensors.tblte.so
 lib/libhr.so:vendor/lib/libhr.so
 
 # Sensorhub
