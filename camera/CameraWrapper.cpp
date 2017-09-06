@@ -31,6 +31,18 @@
 #include <utils/String8.h>
 #include <utils/threads.h>
 
+static const char KEY_DIS[] = "dis";
+static const char DIS_DISABLE[] = "disable";
+static const char KEY_ZSL[] = "zsl";
+static const char ZSL_ON[] = "on";
+static const char ZSL_OFF[] = "off";
+static const char KEY_SUPPORTED_VIDEO_SIZES[] = "supported-video-sizes";
+static const char KEY_VIDEO_SNAPSHOT_SUPPORTED[] = "video-snapshot-supported";
+static const char KEY_FLASH_MODE[] = "flash-mode";
+static const char FLASH_MODE_TORCH[] = "mode-torch";
+static const char KEY_RECORDING_HINT[] = "recording-hint";
+static const char KEY_PREVIEW_FPS_RANGE[] = "preview-fps-range";
+
 #define BACK_CAMERA_ID 0
 #define FRONT_CAMERA_ID 1
 
@@ -123,7 +135,7 @@ static char *camera_fixup_getparams(int __attribute__((unused)) id,
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 
-    const char *recordHint = params.get(CameraParameters::KEY_RECORDING_HINT);
+    const char *recordHint = params.get(KEY_RECORDING_HINT);
     bool videoMode = recordHint ? !strcmp(recordHint, "true") : false;
 
     //Hide nv12-venus from Android.
@@ -131,11 +143,11 @@ static char *camera_fixup_getparams(int __attribute__((unused)) id,
           params.setPreviewFormat(params.PIXEL_FORMAT_YUV420SP);
 
     const char *videoSizeValues = params.get(
-            CameraParameters::KEY_SUPPORTED_VIDEO_SIZES);
+            KEY_SUPPORTED_VIDEO_SIZES);
     if (videoSizeValues) {
         char videoSizes[strlen(videoSizeValues) + 10 + 1];
         sprintf(videoSizes, "3840x2160,%s", videoSizeValues);
-        params.set(CameraParameters::KEY_SUPPORTED_VIDEO_SIZES,
+        params.set(KEY_SUPPORTED_VIDEO_SIZES,
                 videoSizes);
     }
 
@@ -152,7 +164,7 @@ static char *camera_fixup_getparams(int __attribute__((unused)) id,
 
     /* Enforce video-snapshot-supported to true */
     if (videoMode) {
-        params.set(CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
+        params.set(KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
     }
 
     ALOGV("%s: Fixed parameters:", __FUNCTION__);
@@ -180,25 +192,25 @@ static char *camera_fixup_setparams(int id, const char *settings)
         CameraParameters old_params;
         old_params.unflatten(String8(fixed_set_params[id]));
 
-        const char *old_flashMode = old_params.get(CameraParameters::KEY_FLASH_MODE);
-        wasTorch = old_flashMode && !strcmp(old_flashMode, CameraParameters::FLASH_MODE_TORCH);
+        const char *old_flashMode = old_params.get(KEY_FLASH_MODE);
+        wasTorch = old_flashMode && !strcmp(old_flashMode, FLASH_MODE_TORCH);
     }
 
-    const char *recordingHint = params.get(CameraParameters::KEY_RECORDING_HINT);
+    const char *recordingHint = params.get(KEY_RECORDING_HINT);
     bool isVideo = recordingHint && !strcmp(recordingHint, "true");
-    const char *flashMode = params.get(CameraParameters::KEY_FLASH_MODE);
-    bool isTorch = flashMode && !strcmp(flashMode, CameraParameters::FLASH_MODE_TORCH);
+    const char *flashMode = params.get(KEY_FLASH_MODE);
+    bool isTorch = flashMode && !strcmp(flashMode, FLASH_MODE_TORCH);
 
     if (!isTorch && !wasTorch) {
         if (isVideo) {
-            params.set(CameraParameters::KEY_DIS, CameraParameters::DIS_DISABLE);
-            params.set(CameraParameters::KEY_ZSL, CameraParameters::ZSL_OFF);
+            params.set(KEY_DIS, DIS_DISABLE);
+            params.set(KEY_ZSL, ZSL_OFF);
         } else {
-            params.set(CameraParameters::KEY_ZSL, CameraParameters::ZSL_ON);
+            params.set(KEY_ZSL, ZSL_ON);
         }
     }
 
-    params.set(CameraParameters::KEY_PREVIEW_FPS_RANGE, "8000,30000");
+    params.set(KEY_PREVIEW_FPS_RANGE, "8000,30000");
 
     ALOGV("%s: Fixed parameters:", __FUNCTION__);
     params.dump();
