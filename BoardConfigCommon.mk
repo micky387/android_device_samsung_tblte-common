@@ -135,7 +135,7 @@ TARGET_RIL_VARIANT := caf
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tblte-common/recovery/recovery_keys.c
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.full
 LZMA_RAMDISK_TARGETS := recovery
 
 # Render
