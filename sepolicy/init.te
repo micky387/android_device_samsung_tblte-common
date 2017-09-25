@@ -22,3 +22,5 @@ allow init servicemanager:file { open };
 allow init servicemanager:process { getattr };
 allow init qmuxd:unix_stream_socket { connectto };
 allow init kernel:system { module_request };
+
+set_prop(init, wcnss_prop)
