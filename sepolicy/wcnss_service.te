@@ -1,0 +1,2 @@
+get_prop(wcnss_service, wcnss_prop)
+set_prop(wcnss_service, wcnss_prop)
