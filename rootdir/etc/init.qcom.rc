@@ -33,7 +33,6 @@ on early-init
     
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
-    write /sys/block/mmcblk0/queue/scheduler noop
     
     write /sys/block/zram0/comp_algorithm lz4
 
@@ -116,6 +115,12 @@ on post-fs
     chown wifi wifi /sys/module/wlan/parameters/fwpat
 
 on post-fs-data
+     # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/scheduler cfq
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0775 media_rw media_rw
@@ -1319,7 +1324,15 @@ on property:crypto.driver.load=0
      exec /system/bin/rmmod qce.ko
 
 on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler cfq
+    #end boot time fs tune
+    write /sys/block/mmcblk0/queue/scheduler noop
+    write /sys/block/mmcblk0/queue/rq_affinity 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/iostats 1
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+
+    # i/o scheduler
+    setprop sys.io.scheduler "bfq"
 
     # Configure the hardware properly
     write /sys/module/lpm_levels/enable_low_power/l2 4
