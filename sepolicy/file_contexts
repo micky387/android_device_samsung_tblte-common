@@ -11,6 +11,9 @@
 # CMHW
 /sys/devices/virtual/timed_output/vibrator(/.*)?        u:object_r:sysfs_vibeamp:s0
 
+# CPU
+/sys/devices/system/cpu(/.*)?                           u:object_r:sysfs_devices_system_cpu:s0
+
 # Display
 /sys/devices/virtual/lcd/panel/power_reduce             u:object_r:sysfs_display:s0
 
