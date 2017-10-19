@@ -1273,7 +1273,7 @@ service rfs_access /vendor/bin/rfs_access
 service qmuxd /vendor/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth wakelock gps
+    group radio audio bluetooth wakelock gps diag oem_2901
 
 service netmgrd /vendor/bin/netmgrd
     class main
@@ -1294,7 +1294,8 @@ service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
 service bridgemgrd /vendor/bin/bridgemgrd
     class late_start
     user radio
-    group radio
+    group radio oem_2901
+    disabled
 
 # Stop mdm_helper_proxy in case of shutdown
 on property:sys.shutdown.requested=*
