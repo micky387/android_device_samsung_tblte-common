@@ -52,6 +52,10 @@
 /efs/hw_offset                                          u:object_r:sensors_efs_file:s0
 /efs/prox_cal                                           u:object_r:sensors_efs_file:s0
 
+# Sysfs files used by gralloc hal
+/sys/devices/virtual/graphics/fb[0-1]/msm_.*        u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/fd900000.qcom,mdss_mdp/caps            u:object_r:sysfs_hal_gralloc:s0
+
 # TimeKeep
 /system/bin/timekeep                                    u:object_r:timekeep_exec:s0
 
