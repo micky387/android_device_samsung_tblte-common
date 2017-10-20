@@ -315,6 +315,8 @@ PRODUCT_COPY_FILES += \
 # Radio
 PRODUCT_PACKAGES += \
     librmnetctl \
+    libsecnativefeature \
+    libsecril-client \
     libshim_ril
 
 # Reduce client buffer size for fast audio output tracks
