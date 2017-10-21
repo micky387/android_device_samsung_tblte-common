@@ -30,6 +30,9 @@ AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 BOARD_USES_ES705 := true
 
+# Binder API version
+#TARGET_USES_64_BIT_BINDER := true
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_tblte.txt
@@ -120,7 +123,8 @@ TARGET_USES_QCOM_BSP := true
 BOARD_USES_QCOM_HARDWARE := true
 
 # Radio
-BOARD_RIL_CLASS := ../../../device/samsung/tblte-common/ril
+BOARD_PROVIDES_LIBRIL := true
+TARGET_RIL_VARIANT := caf
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tblte-common/recovery/recovery_keys.c

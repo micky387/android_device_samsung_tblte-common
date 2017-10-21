@@ -316,7 +316,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libsecnativefeature \
-    libshim_ril
+    libshim_cutils_atomic
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \

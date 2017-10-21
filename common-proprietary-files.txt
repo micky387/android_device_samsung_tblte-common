@@ -402,10 +402,6 @@ bin/mdm_helper_proxy
 bin/netmgrd
 bin/qcks
 bin/qmuxd
-bin/rild
-lib/libreference-ril.so
-lib/libril.so
-lib/libsecnativefeature.so
 vendor/lib/libril-qcril-hook-oem.so
 
 # Sensors
