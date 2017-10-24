@@ -111,8 +111,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libxml2 \
-    camera.apq8084
+    libxml2
 
 # Charger
 PRODUCT_PACKAGES += \
