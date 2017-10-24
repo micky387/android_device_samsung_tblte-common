@@ -412,6 +412,9 @@ lib/libsensorhub.so
 lib/libsensorhubservice.so
 lib/hw/sensorhubs.apq8084.so
 
+# STLport
+vendor/lib/libstlport.so|bbd5131b5cf7a8a4ce7e716b5cba502a
+
 # Time services
 vendor/lib/libtime_genoff.so
 
