@@ -116,9 +116,6 @@
          so that applications can still use their own mechanisms. -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
-    <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
-         Please don't copy them, copy anything else. -->
-
     <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],
          [associated radio-type],[priority],[restoral-timer(ms)],[dependencyMet]  -->
     <!-- the 5th element "resore-time" indicates the number of milliseconds to delay
@@ -157,17 +154,6 @@
         <item>"rndis0"</item>
         <item>"usb\\d"</item>
     </string-array>
-
-    <!--string-array translatable="false" name="config_oemUsbModeOverride">
-        <item>"bp-tools:rndis,adb:rndis,diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet,adb"</item>
-        <item>"bp-tools:rndis:rndis,diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet,adb"</item>
-        <item>"bp-tools:mtp,adb:diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet,adb"</item>
-        <item>"bp-tools:mtp:diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,usbnet"</item>
-        <item>"mot-factory:rndis,adb:usbnet,adb"</item>
-        <item>"mot-factory:rndis:usbnet"</item>
-        <item>"mot-factory:mtp,adb:usbnet,adb"</item>
-        <item>"mot-factory:mtp:usbnet"</item>
-    </string-array-->
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
@@ -215,10 +201,6 @@
     <!-- Default LED on time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOn">1000</integer>
 
-    <!-- Is the battery LED intrusive?
-         Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
-
     <!-- List of paths to serial ports that are available to the serial manager.
          for example, /dev/ttyUSB0
     -->
@@ -250,18 +232,6 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
     <integer name="config_doubleTapOnHomeBehavior">4</integer>
-    
-    <!-- Control the behavior when the user long presses the app switch button.
-            0 - Nothing
-            1 - Menu key
-            2 - Recent apps view in SystemUI
-            3 - Launch assist intent
-            4 - Voice Search
-            5 - In-app Search
-         This needs to match the constants in
-         services/core/java/com/android/server/policy/policy/impl/PhoneWindowManager.java
-    -->
-    <integer name="config_longPressOnAppSwitchBehavior">5</integer>
 
 <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
@@ -361,9 +331,6 @@
          size set. By setting this to false, devices can opt
          out of setting a batch size, which fixes rotation. -->
     <bool name="config_useDefaultBatchingForAccel">false</bool>
-    
-    <!-- Enable blur support -->
-    <bool name="config_uiBlurEnabled">true</bool>
 
     <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
     <integer-array name="config_safeModeDisabledVibePattern">
@@ -391,48 +358,10 @@
         <item>10</item>
     </integer-array>
 
-    <!-- Disable the home key unlock setting -->
-    <!-- <bool name="config_disableHomeUnlockSetting">false</bool> -->
-
-    <!-- Hardware keys present on the device, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">83</integer>
-
-    <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">65</integer> 
-
     <!-- Enable doze powersaving -->
     <bool name="config_enableWifiDisplay">true</bool>
 
-    <!-- Panel auto-brightness configuration value -->
-    <!--integer name="config_panelAutoBrightnessValue">1</integer-->
-
-    <!-- Performance profiles -->
-    <!--string name="config_perf_profile_prop">powerhal</string>
-    <string name="config_perf_profile_default_entry">1</string-->
-
-        <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
          The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
@@ -453,12 +382,6 @@
          2 - The device DOES NOT have a permanent menu key; ignore autodetection. -->
     <integer name="config_overrideHasPermanentMenuKey">2</integer>
 
-    <!-- Boolean to enable Stylus gestures -->
-    <!-- bool name="config_stylusGestures">true</bool-->
-
-    <!-- Boolean to enable stk functionality on Samsung phones -->
-    <!--bool name="config_samsung_stk">true</bool-->
-
     <!-- SD card is hot-pluggable on this device -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
@@ -469,9 +392,6 @@
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
          provisioning, availability etc -->
     <bool name="config_carrier_volte_available">true</bool>
-
-    <!-- Flag specifying whether VoLTE availability is based on provisioning -->
-    <bool name="config_carrier_volte_provisioned">true</bool>
 
     <!-- Flag specifying whether VoLTE TTY is supported -->
     <bool name="config_carrier_volte_tty_supported">true</bool>
