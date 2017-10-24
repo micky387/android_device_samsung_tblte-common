@@ -223,7 +223,7 @@ PRODUCT_COPY_FILES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    power.apq8084
+    power.APQ8084
 
 # QCOM perf lib
 PRODUCT_PROPERTY_OVERRIDES += \
