@@ -77,6 +77,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
     audiod \
     audio_policy.apq8084 \
     audio.a2dp.default \
@@ -109,6 +111,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/iop_bt.db:/system/etc/bluetooth/iop_bt.db \
 	$(LOCAL_PATH)/configs/iop_device_list.conf:/system/etc/bluetooth/iop_device_list.conf
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
 # Camera
 PRODUCT_PACKAGES += \
     libxml2
@@ -117,8 +123,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# Display
+# Display & Graphics
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.memtrack@1.0-impl \
     copybit.apq8084 \
     gralloc.apq8084 \
     hwcomposer.apq8084 \
@@ -145,6 +155,7 @@ PRODUCT_PACKAGES += Gello
 
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
     gps.apq8084
 
 # GPS config
@@ -180,6 +191,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     sys.keymaster.loaded=true
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -222,6 +237,7 @@ PRODUCT_COPY_FILES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.apq8084
 
 # QCOM perf lib
@@ -241,7 +257,11 @@ PRODUCT_PACKAGES += \
 # Samsung symbols
 PRODUCT_PACKAGES += \
     libshim_ril
-    
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-imp
+
 # TimeKeep
 PRODUCT_PACKAGES += \
     timekeep \
@@ -251,8 +271,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Torch
 
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
+
 # WiFi packages
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     libnetcmdiface \
     macloader \
     hostapd \
