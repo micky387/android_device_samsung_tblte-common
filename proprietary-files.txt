@@ -289,8 +289,6 @@ vendor/lib/libthermalioctl.so
 # DRM
 bin/qseecomd
 lib/libdrmdecrypt.so
-lib/libdrmframework.so
-lib/libdrmframework_jni.so
 lib/drm/libdrmwvmplugin.so:vendor/lib/drm/libdrmwvmplugin.so|8a3f13c902dfb4e40cf491cdc36c595a
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
