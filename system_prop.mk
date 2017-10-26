@@ -99,6 +99,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Ril
 PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/vendor/lib/libsec-ril.so \
     ro.telephony.ril_class=tblteRIL
 
 # Sensors
