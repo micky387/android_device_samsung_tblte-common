@@ -133,6 +133,8 @@ PRODUCT_PACKAGES += \
     copybit.apq8084 \
     gralloc.apq8084 \
     hwcomposer.apq8084 \
+    libgenlock \
+    liboverlay \
     memtrack.apq8084
 
 # Doze service
