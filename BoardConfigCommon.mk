@@ -20,7 +20,6 @@
 LOCAL_PATH := device/samsung/tblte-common
 
 # Architecture
-ENABLE_CPUSETS := true
 TARGET_CPU_VARIANT := krait
 
 # Audio
@@ -58,18 +57,10 @@ BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/lineagehw/
 USE_DEVICE_SPECIFIC_DATASERVICES := true
 
 # Display
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
-MAX_EGL_CACHE_SIZE := 2048*1024
-HAVE_ADRENO_SOURCE := false
 VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
-TARGET_HAS_HH_VSYNC_ISSUE := true
-
-# Fonts
-EXTENDED_FONT_FOOTPRINT := true
 
 # Graphics
-TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 TARGET_USES_GRALLOC1 := true
 
@@ -166,8 +157,6 @@ WIFI_DRIVER_NVRAM_PATH_PARAM:= "/sys/module/dhd/parameters/nvram_path"
 WIFI_DRIVER_NVRAM_PATH      := "/system/etc/wifi/nvram_net.txt"
 
 # Vold
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_VOLD_MAX_PARTITIONS := 28
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
 # Enable dex-preoptimization to speed up first boot sequence
