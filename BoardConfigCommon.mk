@@ -54,12 +54,13 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 # CMHW
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/lineagehw/
 
+# Data services
+USE_DEVICE_SPECIFIC_DATASERVICES := true
+
 # Display
-OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 HAVE_ADRENO_SOURCE := false
-USE_OPENGL_RENDERER := true
 VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 TARGET_HAS_HH_VSYNC_ISSUE := true
@@ -95,7 +96,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/apq8084
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
-#Keymaster
+# Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Legacy BLOB Support
@@ -119,12 +120,8 @@ TARGET_BOARD_PLATFORM := apq8084
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno420
 USE_CLANG_PLATFORM_BUILD := true
 
-
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
-
-# Data services
-USE_DEVICE_SPECIFIC_DATASERVICES := true
 
 # Qualcomm support
 TARGET_USES_QCOM_BSP := true
@@ -135,8 +132,11 @@ BOARD_RIL_CLASS := ../../../device/samsung/tblte-common/ril
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tblte-common/recovery/recovery_keys.c
-#RECOVERY_VARIANT := twrp
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+
+# Render
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+USE_OPENGL_RENDERER := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
