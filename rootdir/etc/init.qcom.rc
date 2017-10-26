@@ -1165,11 +1165,6 @@ on boot
 
 # Services begin here
 
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group input
-
 service adsprpcd /system/bin/adsprpcd
     class main
     user media

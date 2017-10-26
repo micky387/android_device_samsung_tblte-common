@@ -146,7 +146,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprintd \
+    android.hardware.biometrics.fingerprint@2.0-service \
     fingerprint.apq8084
 
 PRODUCT_PROPERTY_OVERRIDES += \
