@@ -1,3 +1,4 @@
+qmux_socket(rild)
 allow rild proc_net:file rw_file_perms;
 allow rild self:capability { dac_override dac_read_search };
 allow rild sysfs:file rw_file_perms;
