@@ -1290,7 +1290,7 @@ service ril-daemon /system/bin/rild
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio log wakelock qcom_diag
+    group radio cache inet misc audio log wakelock oem_2901
     
     on property:wlan.driver.status=ok
     start macloader      
