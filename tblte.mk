@@ -302,6 +302,7 @@ PRODUCT_COPY_FILES += \
 # Radio
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
+    librmnetctl \
     libril_shim \
     librmt_shim
 
