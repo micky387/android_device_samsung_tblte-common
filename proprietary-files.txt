@@ -22,7 +22,7 @@ lib/libcsd-client.so
 #lib/libdetectmodem.so
 lib/libmysound.so
 lib/libssaudio-client.so
-lib/hw/audio.tms.default.so
+lib/hw/audio.tms.default.so:vendor/lib/hw/audio.tms.default.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
@@ -38,7 +38,7 @@ vendor/firmware/bcm4358A1_V0054.0095_wisol.hcd
 
 # Camera
 bin/mm-qcamera-daemon
-lib/hw/camera.apq8084.so
+lib/hw/camera.apq8084.so:vendor/lib/hw/camera.vendor.apq8084.so
 lib/libarcsoft_nighthawk.so
 lib/libliveframework.so
 lib/libmmcamera2_stats_algorithm.so
@@ -303,7 +303,7 @@ vendor/lib/mediadrm/libwvdrmengine.so|0c7932f81cb3d02eb0f1cafb85d7c19c
 
 # GPS
 bin/loc_launcher
-lib/hw/gps.default.so
+lib/hw/gps.default.so:/vendor/lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_api_v02.so
 lib/libloc_eng.so
@@ -370,7 +370,7 @@ vendor/lib/libOmxWmaDec.so
 vendor/lib/libSHIMDivxDrm.so
 
 # NFC
-lib/hw/nfc_nci.apq8084.so
+lib/hw/nfc_nci.apq8084.so:vendor/lib/hw/nfc_nci.apq8084.so
 vendor/firmware/sec_s3fwrn5_firmware.bin
 
 # Perf
@@ -383,10 +383,9 @@ vendor/lib/libmm-abl-oem.so
 
 # Qualcomm
 vendor/lib/libxml.so
-lib/libxml2.so
 
 # Sensors
-lib/hw/sensors.apq8084.so
+lib/hw/sensors.apq8084.so:vendor/lib/hw/sensors.apq8084.so
 lib/libhr.so
 
 # Sensorhub
@@ -394,7 +393,7 @@ bin/sensorhubservice
 lib/libgnustl_shared.so
 lib/libsensorhub.so
 lib/libsensorhubservice.so
-lib/hw/sensorhubs.apq8084.so
+lib/hw/sensorhubs.apq8084.so:vendor/lib/hw/sensorhubs.apq8084.so
 
 # STLport
 vendor/lib/libstlport.so|bbd5131b5cf7a8a4ce7e716b5cba502a
