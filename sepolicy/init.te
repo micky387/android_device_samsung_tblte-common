@@ -11,3 +11,4 @@ allow init cgroup:dir create_dir_perms;
 allow init sysfs_ss_writable:lnk_file read;
 allow init socket_device:sock_file create;
 allow init mhi_device:chr_file { read open write };
+allow init debugfs:file { write };
