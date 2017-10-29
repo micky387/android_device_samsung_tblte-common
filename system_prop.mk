@@ -3,6 +3,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false \
     ro.sys.fw.dex2oat_thread_count=4
 
+# API
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=19
+
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
