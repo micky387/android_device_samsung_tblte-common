@@ -52,18 +52,6 @@ $(DTCPIP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(DTCPIP_SYMLINKS)
 
-KM_IMAGES := \
-    skeymast.b00 skeymast.b01 skeymast.b02 skeymast.b03 skeymast.mdt
-
-KM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/keymaster/,$(notdir $(KM_IMAGES)))
-$(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Keymaster firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/skeymast$(suffix $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
-
 MBA_IMAGES := \
     mba.b00 mba.mdt
 
