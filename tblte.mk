@@ -139,8 +139,13 @@ PRODUCT_PACKAGES += \
     copybit.apq8084 \
     gralloc.apq8084 \
     hwcomposer.apq8084 \
+    hdmi_cec.apq8084 \
+    libhdmi \
+    libqdutils \
     libgenlock \
     liboverlay \
+    libqservice \
+    libvirtual \
     memtrack.apq8084
 
 # Doze service
@@ -215,10 +220,12 @@ PRODUCT_PACKAGES += \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
+    libmm-omxcore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVdecHevc \
+    libOmxVdpp \
     libOmxVenc \
     libstagefrighthw
 
