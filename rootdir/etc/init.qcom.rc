@@ -136,6 +136,8 @@ on post-fs-data
     mkdir /data/media 0775 media_rw media_rw
     chown media_rw media_rw /data/media
     
+    mkdir /data/etc 0775 system system
+    
     # CP Reset Log
     mkdir /data/radio 0770 radio radio
 
@@ -1273,7 +1275,6 @@ service mdm_helper /system/bin/mdm_helper
     group root system wakelock radio
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
-    disabled
 
 service mdm_helper_proxy /system/bin/mdm_helper_proxy
     class core
@@ -1281,20 +1282,16 @@ service mdm_helper_proxy /system/bin/mdm_helper_proxy
     group system wakelock
     disabled
 
-on property:init.svc.ril-daemon=running
-    setprop ro.mdm_helper_proxy_req true
+# Stop mdm_helper_proxy in case of shutdown
+on property:sys.shutdown.requested=*
+    stop mdm_helper_proxy
 
-on property:ro.baseband=mdm
-    start mdm_helper
-
-on property:ro.baseband=mdm2
-    insmod /system/lib/modules/mhi.ko
-    write /dev/kmsg "insmod mhi.ko"
-    start mdm_helper
-
-# Start mdm_helper_proxy
+# Start mdm_helper_proxy after RIL.
 on property:ro.mdm_helper_proxy_req=true
     start mdm_helper_proxy
+
+on property:init.svc.ril-daemon=running
+setprop ro.mdm_helper_proxy_req true
 
 service wpa_supplicant system/vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
