@@ -1266,9 +1266,9 @@ service rfs_access /system/bin/rfs_access
     group system net_raw
 
 service qmuxd /system/bin/qmuxd
-    class core
-    user root
-    group radio audio bluetooth gps diag log
+    class main
+    user radio
+    group radio audio bluetooth wakelock gps
 
 service mdm_helper /system/bin/mdm_helper
     user root
