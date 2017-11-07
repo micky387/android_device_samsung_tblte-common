@@ -253,7 +253,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-sec.conf:system/vendor/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/configs/libnfc-sec-hal.conf:system/vendor/etc/libnfc-sec-hal.conf \
-    $(LOCAL_PATH)/configs/nfcee_access.xml:system/vendor/etc/nfcee_access.xml
+    $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -278,10 +278,6 @@ PRODUCT_PACKAGES += \
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
-
-# Samsung symbols
-PRODUCT_PACKAGES += \
-    libshim_ril
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -318,10 +314,8 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
     librmnetctl \
-    libril_shim \
-    librmt_shim
+    libshim_ril
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
