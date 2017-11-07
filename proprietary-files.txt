@@ -419,6 +419,22 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
+# Radio
+bin/efsks
+bin/ks
+bin/mdm_helper
+bin/mdm_helper_proxy
+bin/netmgrd
+bin/qcks
+bin/qmuxd
+bin/rild
+bin/rmnetcli
+lib/libreference-ril.so
+lib/libril.so
+lib/librmnetctl.so
+lib/libsecnativefeature.so
+vendor/lib/libril-qcril-hook-oem.so
+
 # Sensors
 lib/hw/sensors.apq8084.so:vendor/lib/hw/sensors.apq8084.so
 lib/libhr.so
