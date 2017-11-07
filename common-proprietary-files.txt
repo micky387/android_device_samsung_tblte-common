@@ -3,9 +3,6 @@ bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
-vendor/lib/libscve.so
-vendor/lib/libscve_stub.so
-vendor/lib/rfsa/adsp/libadsp_fd_skel.so
 
 # Audio
 etc/Bluetooth_cal.acdb
@@ -288,14 +285,13 @@ vendor/lib/libthermalioctl.so
 
 # DRM
 bin/qseecomd
-lib/libdrmdecrypt.so
-lib/drm/libdrmwvmplugin.so:vendor/lib/drm/libdrmwvmplugin.so|8a3f13c902dfb4e40cf491cdc36c595a
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
+vendor/lib/drm/libdrmwvmplugin.so|8a3f13c902dfb4e40cf491cdc36c595a
 vendor/lib/libWVStreamControlAPI_L1.so|74e4a4ba035ed5da9b81cc2cc3929151
 vendor/lib/libwvm.so|2952583e50d8e71259e8f95b0af28c57
 vendor/lib/libwvdrm_L1.so|a19e8a30943ed66d51f58504673e72c4
@@ -375,11 +371,6 @@ vendor/firmware/sec_s3fwrn5_firmware.bin
 
 # Perf
 vendor/lib/libqc-opt.so
-
-# Postprocessing
-vendor/lib/libdisp-aba.so
--vendor/lib/libmm-abl.so
-vendor/lib/libmm-abl-oem.so
 
 # Qualcomm
 vendor/lib/libxml.so
