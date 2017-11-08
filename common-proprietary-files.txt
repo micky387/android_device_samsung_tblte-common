@@ -283,7 +283,7 @@ vendor/bin/thermal-engine
 vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
-# DRM
+# DRM  *Shamu NBD91P 
 bin/qseecomd
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -291,10 +291,11 @@ vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
-vendor/lib/drm/libdrmwvmplugin.so|8a3f13c902dfb4e40cf491cdc36c595a
+vendor/lib/libdrmdecrypt.so|54c65cbfdf871fe34ad9af05a6d31b01
 vendor/lib/libWVStreamControlAPI_L1.so|74e4a4ba035ed5da9b81cc2cc3929151
 vendor/lib/libwvm.so|2952583e50d8e71259e8f95b0af28c57
 vendor/lib/libwvdrm_L1.so|a19e8a30943ed66d51f58504673e72c4
+vendor/lib/drm/libdrmwvmplugin.so|8a3f13c902dfb4e40cf491cdc36c595a
 vendor/lib/mediadrm/libwvdrmengine.so|0c7932f81cb3d02eb0f1cafb85d7c19c
 
 # GPS
