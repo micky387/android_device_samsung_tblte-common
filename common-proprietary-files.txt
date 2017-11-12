@@ -372,19 +372,7 @@ vendor/lib/libqc-opt.so
 vendor/lib/libxml.so
 
 # Qualcomm framework
-lib/libagc_max.so
-lib/libqservice.so
-lib/libtinyxml.so
 lib/libqdutils.so
-lib/libjpegehw.so
-lib/libjpegdhw.so
-lib/libedmnativehelper.so
-lib/libbt-iopdb.so
-lib/libbt-iopdb_mod.so
-lib/libbt-codec_aptx.so
-lib/libbt-aptX-ARM-4.2.2.so
-lib/libbt-codec_sshd.so
-lib/libshdace.so
 lib/libprotobuf-cpp-full.so
 lib/libprotobuf-cpp-lite.so
 vendor/lib/libconfigdb.so
