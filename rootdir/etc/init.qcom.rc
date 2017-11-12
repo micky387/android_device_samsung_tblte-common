@@ -1330,7 +1330,7 @@ service ril-daemon /system/bin/rild
     user root
     group radio cache inet misc audio log wakelock oem_2901
 
-service macloader /system/bin/macloader
+service macloader /system/vendor/bin/macloader
     class main
     user system
     group wifi    
