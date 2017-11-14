@@ -395,6 +395,7 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
 # Radio
+bin/bridgemgrd
 bin/efsks
 bin/ks
 bin/mdm_helper

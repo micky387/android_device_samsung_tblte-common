@@ -1286,6 +1286,11 @@ service mdm_helper_proxy /system/bin/mdm_helper_proxy
     group system wakelock
     disabled
 
+service bridgemgrd /system/bin/bridgemgrd
+    class late_start
+    user radio
+    group radio
+
 # Stop mdm_helper_proxy in case of shutdown
 on property:sys.shutdown.requested=*
     stop mdm_helper_proxy
