@@ -1,0 +1,2 @@
+allow toolbox rmnet_mux_prop:file { getattr open read };
+allow toolbox init:fifo_file { getattr open read };

@@ -1,0 +1,2 @@
+allow servicemanager init:dir search;
+allow servicemanager init:file read;
