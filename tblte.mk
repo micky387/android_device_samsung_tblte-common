@@ -316,6 +316,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libsecnativefeature \
+    libsecril-client-sap \
+    libsecril-client \
     libshim_cutils_atomic
 
 # Reduce client buffer size for fast audio output tracks
