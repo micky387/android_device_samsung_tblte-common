@@ -1211,31 +1211,31 @@ on boot
 
 # Services begin here
 
-service adsprpcd /system/bin/adsprpcd
+service adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
 
     writepid /dev/cpuset/system-background/tasks
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
     disabled
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
     disabled
 
-service thermal-engine /system/vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine
     class main
     user root
     socket thermal-send-client stream 0666 system system
@@ -1243,12 +1243,12 @@ service thermal-engine /system/vendor/bin/thermal-engine
     socket thermal-recv-passive-client stream 0666 system system
     group root
 
-service sensorhubservice /system/bin/sensorhubservice
+service sensorhubservice /vendor/bin/sensorhubservice
     class main
     user system
     group input
 
-service timekeep /system/bin/timekeep restore
+service timekeep /vendor/bin/timekeep restore
     class late_start
     user root
     group root
@@ -1259,34 +1259,34 @@ service audiod /system/bin/audiod
     user system
     group system
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
 
-service rfs_access /system/bin/rfs_access
+service rfs_access /vendor/bin/rfs_access
     class core
     user system
     group system net_raw
 
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth wakelock gps
+    group radio audio bluetooth wakelock gps 
 
-service mdm_helper /system/bin/mdm_helper
+service mdm_helper /vendor/bin/mdm_helper
     user root
     group root system wakelock radio
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
 
-service mdm_helper_proxy /system/bin/mdm_helper_proxy
+service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
     class core
     user system
     group system wakelock
     disabled
 
-service bridgemgrd /system/bin/bridgemgrd
+service bridgemgrd /vendor/bin/bridgemgrd
     class late_start
     user radio
     group radio
@@ -1314,21 +1314,21 @@ service wpa_supplicant  /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service olsrd /system/bin/olsrd -f /etc/wifi/olsrd.conf
+service olsrd /vendor/bin/olsrd -f /etc/wifi/olsrd.conf
     class main
     disabled
 
-service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
+service dhcpcd_bt-pan /vendor/bin/dhcpcd -BKLG
     class late_start
     disabled
     oneshot
 
-service loc_launcher /system/bin/loc_launcher
+service loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-     group gps inet diag wifi
+    group gps inet diag wifi
 
-service macloader /system/vendor/bin/macloader
+service macloader /vendor/bin/macloader
     class main
     user system
     group wifi    
@@ -1517,7 +1517,7 @@ on property:sys.boot_completed=1
     symlink /data/user_de/0/com.android.providers.telephony/databases /data/data/com.android.providers.telephony/databases
     symlink /data/user_de/0/com.android.providers.telephony/shared_prefs /data/data/com.android.providers.telephony/shared_prefs
 
-service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
+service hostapd /vendor/bin/hostapd -dddd /data/hostapd/hostapd.conf
     class late_start
     user root
     group root
@@ -1532,12 +1532,12 @@ service charger /charger
     class charger
     seclabel u:r:healthd:s0
 
-service sec-sh /system/bin/sh /system/etc/init.sec.boot.sh
+service sec-sh /vendor/bin/sh /system/etc/init.sec.boot.sh
     class main
     user root
     oneshot
 
-service hcidump /system/bin/sh /system/etc/hcidump.sh
+service hcidump /vendor/bin/sh /system/etc/hcidump.sh
     user bluetooth
     group bluetooth system net_bt_admin net_admin
     disabled

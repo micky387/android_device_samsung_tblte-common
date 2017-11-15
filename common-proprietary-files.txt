@@ -1,5 +1,5 @@
 # ADSP
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
@@ -34,7 +34,7 @@ vendor/firmware/bcm4358A1_V0054.0095.hcd
 vendor/firmware/bcm4358A1_V0054.0095_wisol.hcd
 
 # Camera
-bin/mm-qcamera-daemon
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.apq8084.so:vendor/lib/hw/camera.vendor.apq8084.so
 lib/libarcsoft_nighthawk.so
 lib/libliveframework.so
@@ -278,13 +278,13 @@ etc/H16US_imx240_module_info.xml
 
 
 # CPU
-bin/mpdecision
+bin/mpdecision:vendor/bin/mpdecision
 vendor/bin/thermal-engine
 vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # DRM  *Shamu NBD91P 
-bin/qseecomd
+bin/qseecomd:venodr/bin/qseecomd
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
@@ -299,7 +299,7 @@ vendor/lib/drm/libdrmwvmplugin.so|8a3f13c902dfb4e40cf491cdc36c595a
 vendor/lib/mediadrm/libwvdrmengine.so|0c7932f81cb3d02eb0f1cafb85d7c19c
 
 # GPS
-bin/loc_launcher
+bin/loc_launcher:vendor/bin/loc_launcher
 lib/hw/gps.default.so:/vendor/lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_api_v02.so
@@ -340,7 +340,7 @@ etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # IPC router security
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_util
 etc/sec_config
 
 # Keystore stuffs.
@@ -352,7 +352,7 @@ vendor/lib/libsecureui_svcsock.so
 vendor/lib/libsecureuisvc_jni.so
 
 # IPv6 Tethering
-bin/radish
+bin/radish:vendor/bin/radish
 
 # Media
 vendor/lib/libOmxAacDec.so
@@ -395,14 +395,14 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
 # Radio
-bin/bridgemgrd
-bin/efsks
-bin/ks
-bin/mdm_helper
-bin/mdm_helper_proxy
-bin/netmgrd
-bin/qcks
-bin/qmuxd
+bin/bridgemgrd:vendor/bin/bridgemgrd
+bin/efsks:vendor/bin/efsks
+bin/ks:vendor/bin/ks
+bin/mdm_helper:venodr/bin/mdm_helper
+bin/mdm_helper_proxy:vendor/bin/mdm_helper_proxy
+bin/netmgrd/vendor/bin/netmgrd
+bin/qcks:vendor/bin/qcks
+bin/qmuxd:vendor/bin/qmuxd
 vendor/lib/libril-qcril-hook-oem.so
 
 # Sensors
@@ -410,7 +410,7 @@ lib/hw/sensors.apq8084.so:vendor/lib/hw/sensors.apq8084.so
 lib/libhr.so
 
 # Sensorhub
-bin/sensorhubservice
+bin/sensorhubservice:vendor/bin/sensorhubservice
 lib/libgnustl_shared.so
 lib/libsensorhub.so
 lib/libsensorhubservice.so
@@ -423,7 +423,7 @@ vendor/lib/libstlport.so|bbd5131b5cf7a8a4ce7e716b5cba502a
 vendor/lib/libtime_genoff.so
 
 # Wi-Fi
-bin/olsrd
+bin/olsrd:vendor/bin/olsrd
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_ibss.bin
 etc/wifi/bcmdhd_mfg.bin
