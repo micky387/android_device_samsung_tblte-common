@@ -107,11 +107,11 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth    
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/auto_pair_devlist.conf:/system/vendor/etc/auto_pair_devlist.conf \
-	$(LOCAL_PATH)/configs/bt_did.conf:/system/vendor/etc/bluetooth/bt_did.conf \
-	$(LOCAL_PATH)/configs/bt_stack.conf:/system/vendor/etc/bluetooth/bt_stack.conf \
-	$(LOCAL_PATH)/configs/iop_bt.db:/system/vendor/etc/bluetooth/iop_bt.db \
-	$(LOCAL_PATH)/configs/iop_device_list.conf:/system/vendor/etc/bluetooth/iop_device_list.conf
+	$(LOCAL_PATH)/configs/auto_pair_devlist.conf:/system/etc/auto_pair_devlist.conf \
+	$(LOCAL_PATH)/configs/bt_did.conf:/system/etc/bluetooth/bt_did.conf \
+	$(LOCAL_PATH)/configs/bt_stack.conf:/system/etc/bluetooth/bt_stack.conf \
+	$(LOCAL_PATH)/configs/iop_bt.db:/system/etc/bluetooth/iop_bt.db \
+	$(LOCAL_PATH)/configs/iop_device_list.conf:/system/etc/bluetooth/iop_device_list.conf
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -174,10 +174,10 @@ PRODUCT_PACKAGES += \
 
 # GPS config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/flp.conf:/system/vendor/etc/flp.conf \
-    $(LOCAL_PATH)/configs/gps.conf:/system/vendor/etc/gps.conf \
-    $(LOCAL_PATH)/configs/izat.conf:/system/vendor/etc/izat.conf \
-    $(LOCAL_PATH)/configs/sap.conf:/system/vendor/etc/sap.conf
+    $(LOCAL_PATH)/configs/flp.conf:/system/etc/flp.conf \
+    $(LOCAL_PATH)/configs/gps.conf:/system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/izat.conf:/system/etc/izat.conf \
+    $(LOCAL_PATH)/configs/sap.conf:/system/etc/sap.conf
 
 # IPv6 tethering
 PRODUCT_PACKAGES += \
