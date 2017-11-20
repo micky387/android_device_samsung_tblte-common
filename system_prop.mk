@@ -140,3 +140,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Allow tethering without provisioning app
 PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
