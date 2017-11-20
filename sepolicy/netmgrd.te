@@ -1,3 +1,5 @@
 allow netmgrd vendor_file_type:file rx_file_perms;
 allow netmgrd self:dir { open read };
 allow netmgrd netmgrd:capability { dac_override };
+#allow netmgrd unlabeled:file { getattr execute open read };
+allow netmgrd sysfs:dir { open read };
