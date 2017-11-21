@@ -124,6 +124,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
     camera.apq8084 \
+    libcamera_parameters_shim \
     libxml2
 
 # Charger
