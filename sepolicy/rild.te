@@ -11,3 +11,4 @@ allow rild radio_data_file:lnk_file r_file_perms;
 
 
 allow radio self:process ptrace;
+allow rild rild_exec:file { getattr execute open read };
