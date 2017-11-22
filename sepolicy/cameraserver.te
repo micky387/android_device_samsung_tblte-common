@@ -1,0 +1,1 @@
+allow cameraserver cameraserver_exec:file r_file_perms;

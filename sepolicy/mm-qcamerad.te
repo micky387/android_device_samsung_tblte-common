@@ -6,3 +6,4 @@ allow mm-qcamerad camera_data_file:sock_file { create unlink };
 allow mm-qcamerad system_file:file execmod;
 allow mm-qcamerad sysfs_camera:dir search;
 allow mm-qcamerad vendor_file:file execmod;
+allow mm-qcamerad sysfs_camera:file { open read };

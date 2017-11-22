@@ -7,6 +7,7 @@
 # Camera
 /data/cam_socket.*                                      u:object_r:camera_socket:s0
 /sys/devices/virtual/camera(/.*)?                       u:object_r:sysfs_camera:s0
+/system/vendor/lib/hw/camera.vendor.apq8084.so          u:object_r:cameraserver_exec:s0
 
 # CMHW
 /sys/devices/virtual/timed_output/vibrator(/.*)?        u:object_r:sysfs_vibeamp:s0
