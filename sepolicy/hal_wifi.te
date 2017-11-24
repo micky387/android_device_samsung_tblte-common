@@ -1,0 +1,4 @@
+allow hal_wifi system_data_file:file { open read };
+allow hal_wifi sysfs:file write;
+allow hal_wifi wifi_efs_file:dir search;
+allow hal_wifi wifi_efs_file:file { open read };
