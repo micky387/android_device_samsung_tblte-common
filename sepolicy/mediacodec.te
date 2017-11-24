@@ -1,2 +1,2 @@
 allow mediacodec mpctl_socket:dir search;
-allow mediacodec system_server:fifo_file write;
+allow mediacodec system_server:fifo_file { append write };
