@@ -304,7 +304,8 @@ PRODUCT_PACKAGES += \
     hostapd \
     libwpa_client \
     wificond \
-    wifilogd
+    wifilogd \
+    wpa_supplicant
 
 # WiFi config
 PRODUCT_COPY_FILES += \
