@@ -433,9 +433,6 @@ on post-fs-data
     rm /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
     rmdir /data/data/com.android.providers.telephony/databases
     rmdir /data/data/com.android.providers.telephony/shared_prefs
-    
-    # hack to workaround wifitracing causing panic
-    setprop sys.wifitracing.started 1
 
     setprop vold.post_fs_data_done 1
 
