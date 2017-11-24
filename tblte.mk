@@ -107,7 +107,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth    
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/auto_pair_devlist.conf:/system/etc/auto_pair_devlist.conf \
+	$(LOCAL_PATH)/configs/auto_pair_devlist.conf:/system/etc/bluetooth/auto_pair_devlist.conf \
 	$(LOCAL_PATH)/configs/bt_did.conf:/system/etc/bluetooth/bt_did.conf \
 	$(LOCAL_PATH)/configs/bt_stack.conf:/system/etc/bluetooth/bt_stack.conf \
 	$(LOCAL_PATH)/configs/iop_bt.db:/system/etc/bluetooth/iop_bt.db \
