@@ -15,3 +15,6 @@ allow system_server sensors_efs_file:file { read open };
 allow system_server user_profile_data_file:dir read;
 allow system_server storage_stub_file:dir getattr;
 allow system_server mpdecision:unix_stream_socket connectto;
+allow system_server qmuxd_socket:sock_file write;
+allow system_server qmuxd:unix_stream_socket connectto;
+allow system_server alarm_boot_prop:file { read open };
