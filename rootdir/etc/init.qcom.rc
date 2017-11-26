@@ -1341,6 +1341,16 @@ service bridgemgrd /vendor/bin/bridgemgrd
     group radio oem_2901
     disabled
 
+# Stop mdm_helper_proxy in case of shutdown
+on property:sys.shutdown.requested=*
+    stop mdm_helper_proxy
+
+# Start mdm_helper_proxy after RIL.
+on property:ro.mdm_helper_proxy_req=true
+    start mdm_helper_proxy
+
+on property:init.svc.ril-daemon=running
+setprop ro.mdm_helper_proxy_req true
 
 service wpa_supplicant  /vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
