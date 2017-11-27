@@ -1290,11 +1290,6 @@ service thermal-engine /vendor/bin/thermal-engine
     socket thermal-recv-passive-client stream 0666 system system
     group root
 
-service sensorhubservice /vendor/bin/sensorhubservice
-    class main
-    user system
-    group input
-
 service timekeep /vendor/bin/timekeep restore
     class late_start
     user root
@@ -1317,9 +1312,9 @@ service rfs_access /vendor/bin/rfs_access
     group system net_raw
 
 service qmuxd /vendor/bin/qmuxd
-    class main
-    user radio
-    group radio audio bluetooth wakelock gps diag oem_2901
+    class core
+    user root
+    group radio audio bluetooth gps qcom_diag log
     writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /vendor/bin/netmgrd
@@ -1327,15 +1322,13 @@ service netmgrd /vendor/bin/netmgrd
     writepid /dev/cpuset/system-background/tasks
 
 service mdm_helper /vendor/bin/mdm_helper
-    user root
-    group root system wakelock radio
     class core
+    user root
+    group root system radio qcom_diag wakelock
     onrestart setprop ro.service.mdm_helper_restarted "true"
 
 service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
     class core
-    user system
-    group system wakelock
     disabled
 
 service bridgemgrd /vendor/bin/bridgemgrd
@@ -1344,16 +1337,22 @@ service bridgemgrd /vendor/bin/bridgemgrd
     group radio oem_2901
     disabled
 
-# Stop mdm_helper_proxy in case of shutdown
-on property:sys.shutdown.requested=*
-    stop mdm_helper_proxy
+on property:init.svc.ril-daemon=running
+    setprop ro.mdm_helper_proxy_req true
 
-# Start mdm_helper_proxy after RIL.
+on property:ro.baseband=mdm
+    start mdm_helper
+
+on property:ro.baseband=mdm2
+    start mdm_helper
+
+on property:sys.qseecomd.enable=true
+    insmod /system/lib/modules/mhi.ko
+    write /dev/kmsg "insmod mhi.ko"
+
+# Start mdm_helper_proxy
 on property:ro.mdm_helper_proxy_req=true
     start mdm_helper_proxy
-
-on property:init.svc.ril-daemon=running
-setprop ro.mdm_helper_proxy_req true
 
 service wpa_supplicant  /vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -1559,8 +1558,8 @@ on property:sys.boot_completed=1
     chown system radio /sys/class/sec/sec_epen/boost_level
 
     # Post boot services
-    start mpdecision
     rm /data/system/perfd/default_values
+    start mpdecision
 
     # Enable intelli-thermal for boot
     write /sys/module/msm_thermal/parameters/enabled 1
