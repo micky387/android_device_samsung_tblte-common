@@ -1314,7 +1314,7 @@ service rfs_access /vendor/bin/rfs_access
 service qmuxd /vendor/bin/qmuxd
     class core
     user root
-    group radio audio bluetooth gps qcom_diag log
+    group radio audio bluetooth gps oem_2950 log
     writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /vendor/bin/netmgrd
@@ -1324,7 +1324,7 @@ service netmgrd /vendor/bin/netmgrd
 service mdm_helper /vendor/bin/mdm_helper
     class core
     user root
-    group root system radio qcom_diag wakelock
+    group root system radio oem_2950 wakelock
     onrestart setprop ro.service.mdm_helper_restarted "true"
 
 service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
@@ -1334,7 +1334,7 @@ service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
 service bridgemgrd /vendor/bin/bridgemgrd
     class late_start
     user radio
-    group radio oem_2901
+    group radio oem_2950
     disabled
 
 on property:init.svc.ril-daemon=running
