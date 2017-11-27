@@ -399,7 +399,7 @@ vendor/lib/libqmiservices.so
 # Radio
 bin/bridgemgrd:vendor/bin/bridgemgrd
 bin/efsks:vendor/bin/efsks
-bin/ks:vendor/bin/ks
+bin/ks
 bin/mdm_helper:venodr/bin/mdm_helper
 bin/mdm_helper_proxy:vendor/bin/mdm_helper_proxy
 bin/netmgrd/vendor/bin/netmgrd
