@@ -77,6 +77,9 @@
 # TimeKeep
 /(vendor|system/vendor)/bin/timekeep                                    u:object_r:timekeep_exec:s0
 
+# Trace_maker
+/sys/kernel/debug/tracing/trace_marker                  u:object_r:qti_debugfs:s0
+
 # Uncrypt
 /dev/block/platform/msm_sdcc.1/by-name/misc              u:object_r:misc_block_device:s0
 
