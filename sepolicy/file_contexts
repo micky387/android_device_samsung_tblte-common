@@ -29,6 +29,10 @@
 # Macloader
 /system/vendor/bin/macloader                                   u:object_r:macloader_exec:s0
 
+# Mdm
+/system/vendor/bin/qcks                                        u:object_r:mdm_helper_exec:s0
+/system/vendor/bin/efks                                        u:object_r:mdm_helper_exec:s0
+
 # NFC
 /dev/sec-nfc                                            u:object_r:nfc_device:s0
 /dev/bcm2079x                                           u:object_r:nfc_device:s0

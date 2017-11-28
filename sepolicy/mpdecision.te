@@ -1,7 +1,9 @@
 allow mpdecision socket_device:dir rw_dir_perms;
 allow mpdecision socket_device:sock_file { write create setattr };
+# >neverallow< allow mpdecision system_data_file:file { create read append open };
 allow mpdecision system_data_file:sock_file { create unlink write setattr };
-allow mpdecision system_data_file:dir { add_name remove_name write };
+allow mpdecision system_data_file:dir { add_name create remove_name write };
 allow mpdecision thermal_socket:sock_file write;
 allow mpdecision thermal-engine:unix_stream_socket connectto;
+allow mpdecision sysfs:file { open read };
 # >neverallow< allow mpdecision self:capability sys_ptrace;

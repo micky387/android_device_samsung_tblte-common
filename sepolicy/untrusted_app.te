@@ -11,4 +11,5 @@ allow untrusted_app sysfs:file read;
 
 # >neverallow< allow untrusted_app fuse_device:chr_file getattr;
 # >neverallow< allow untrusted_app efs_file:file read;
+# >neverallow< allow untrusted_app serialno_prop:file { getattr open read };
 
