@@ -75,7 +75,8 @@
 /sys/devices/virtual/android_usb/android0/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0 
 
 # TimeKeep
-/(vendor|system/vendor)/bin/timekeep                                    u:object_r:timekeep_exec:s0
+/(vendor|system/vendor)/bin/timekeep                    u:object_r:timekeep_exec:s0
+/data/time/ats_2                                        u:object_r:timekeep_exec:s0
 
 # Trace_maker
 /sys/kernel/debug/tracing/trace_marker                  u:object_r:qti_debugfs:s0
