@@ -7,7 +7,7 @@
 # Camera
 /data/cam_socket.*                                      u:object_r:camera_socket:s0
 /sys/devices/virtual/camera(/.*)?                       u:object_r:sysfs_camera:s0
-/system/vendor/lib/hw/camera.vendor.apq8084.so          u:object_r:cameraserver_exec:s0
+/(vendor|system/vendor)/lib/hw/camera.vendor.apq8084.so          u:object_r:cameraserver_exec:s0
 
 # CMHW
 /sys/devices/virtual/timed_output/vibrator(/.*)?        u:object_r:sysfs_vibeamp:s0
@@ -27,11 +27,11 @@
 /dev/vfsspi                                             u:object_r:vcs_device:s0
 
 # Macloader
-/system/vendor/bin/macloader                                   u:object_r:macloader_exec:s0
+/(vendor|system/vendor)/bin/macloader                                   u:object_r:macloader_exec:s0
 
 # Mdm
-/system/vendor/bin/qcks                                        u:object_r:mdm_helper_exec:s0
-/system/vendor/bin/efks                                        u:object_r:mdm_helper_exec:s0
+/(vendor|system/vendor)/bin/qcks                                        u:object_r:mdm_helper_exec:s0
+/(vendor|system/vendor)/bin/efks                                        u:object_r:mdm_helper_exec:s0
 
 # NFC
 /dev/sec-nfc                                            u:object_r:nfc_device:s0
@@ -43,7 +43,7 @@
 /data/data/com.android.providers.telephony/shared_prefs(/.*)?  u:object_r:radio_data_file:s0
 
 # Rild
-/system/vendor/lib/libdiag.so                           u:object_r:rild_exec:s0
+/(vendor|system/vendor)/lib/libdiag.so                           u:object_r:rild_exec:s0
 
 # SEC
 /sys/devices/virtual/sec/sec_key/hall_irq_ctrl          u:object_r:sysfs_sec:s0
@@ -51,7 +51,7 @@
 /sys/devices/virtual/sec/tsp(/.*)?                      u:object_r:sysfs_sec:s0
 
 # Sensorhub
-/system/vendor/bin/sensorhubservice                            u:object_r:sensorhubservice_exec:s0
+/(vendor|system/vendor)/bin/sensorhubservice                            u:object_r:sensorhubservice_exec:s0
 
 # Sensors
 /dev/batch_io                                           u:object_r:sensors_device:s0
@@ -75,7 +75,7 @@
 /sys/devices/virtual/android_usb/android0/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0 
 
 # TimeKeep
-/system/vendor/bin/timekeep                                    u:object_r:timekeep_exec:s0
+/(vendor|system/vendor)/bin/timekeep                                    u:object_r:timekeep_exec:s0
 
 # Uncrypt
 /dev/block/platform/msm_sdcc.1/by-name/misc              u:object_r:misc_block_device:s0
