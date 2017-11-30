@@ -1590,7 +1590,7 @@ service charger /charger
     class charger
     seclabel u:r:charger:s0
 
-service sec-sh /vendor/bin/sh /system/etc/init.sec.boot.sh
+service sec-sh /vendor/bin/sh /system/vendor/etc/init.sec.boot.sh
     class main
     user root
     oneshot
