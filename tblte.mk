@@ -273,6 +273,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
+# Radio
+PRODUCT_PACKAGES += \
+    librmnetctl \
+    libsecnativefeature \
+    libsecril-client-sap \
+    libsecril-client \
+    libshim_cutils_atomic
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -321,14 +332,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-
-# Radio
-PRODUCT_PACKAGES += \
-    librmnetctl \
-    libsecnativefeature \
-    libsecril-client-sap \
-    libsecril-client \
-    libshim_cutils_atomic
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
