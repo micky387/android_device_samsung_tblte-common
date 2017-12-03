@@ -374,8 +374,8 @@ vendor/lib/libxml.so
 
 # Qualcomm framework
 lib/libqdutils.so
-lib/libprotobuf-cpp-full.so
-lib/libprotobuf-cpp-lite.so
+lib/libprotobuf-cpp-full.so:vendorlib/libprotobuf-cpp-M.so|d3d9254e2702b1e8df6d5b7b3e6693ce
+lib/libprotobuf-cpp-lite.so:vendor/lib/libprotobuf-cpp-lite.so
 vendor/lib/libconfigdb.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libdataitems.so
@@ -406,6 +406,7 @@ bin/netmgrd/vendor/bin/netmgrd
 bin/qcks:vendor/bin/qcks
 bin/qmuxd:vendor/bin/qmuxd
 vendor/lib/libril-qcril-hook-oem.so
+lib/libsec-ril.so:vendor/lib/libsec-ril.so|d2cb96b8d0517e8c7f6e934df8807125
 
 # Sensors
 lib/hw/sensors.apq8084.so:vendor/lib/hw/sensors.apq8084.so
