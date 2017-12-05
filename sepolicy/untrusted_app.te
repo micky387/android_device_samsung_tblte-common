@@ -8,6 +8,7 @@ allow untrusted_app firmware_file:file getattr;
 allow untrusted_app device:dir { read open };
 allow untrusted_app block_device:dir { read open };
 allow untrusted_app sysfs:file read;
+allow untrusted_app cameraserver_exec:file getattr;
 
 # >neverallow< allow untrusted_app fuse_device:chr_file getattr;
 # >neverallow< allow untrusted_app efs_file:file read;
