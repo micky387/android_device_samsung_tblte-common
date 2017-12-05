@@ -304,6 +304,10 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep    
 
+# Thermal
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:/system/etc/thermal-engine.conf
+
 # Torch
 PRODUCT_PACKAGES += \
     Torch
