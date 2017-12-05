@@ -341,7 +341,7 @@ etc/firmware/a420_pm4.fw
 
 # IPC router security
 bin/irsc_util:vendor/bin/irsc_util
-etc/sec_config
+etc/sec_config:vendor/etc/sec_config
 
 # Keystore stuffs.
 vendor/lib/lib-sec-disp.so
@@ -362,8 +362,8 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 
 # NFC
-lib/hw/nfc_nci.apq8084.so:vendor/lib/hw/nfc_nci.apq8084.so
-etc/sec_s3fwrn5_rfreg.bin
+lib/hw/nfc_nci.apq8084.so:vendor/lib/hw/nfc_nci.vendor.apq8084.so
+etc/sec_s3fwrn5_rfreg.bin:vendor/etc/sec_s3fwrn5_rfreg.bin
 vendor/firmware/sec_s3fwrn5_firmware.bin
 
 # Perf
@@ -409,6 +409,7 @@ vendor/lib/libril-qcril-hook-oem.so
 lib/libsec-ril.so:vendor/lib/libsec-ril.so|d2cb96b8d0517e8c7f6e934df8807125
 
 # Sensors
+etc/sensors/sensor_def_qcomdev.conf:vendor/etc/sensors/sensor_def_qcomdev.conf
 lib/hw/sensors.apq8084.so:vendor/lib/hw/sensors.apq8084.so
 lib/libhr.so
 
