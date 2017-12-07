@@ -451,6 +451,7 @@ on boot
     # Enable intelli-thermal for boot
     write /sys/module/msm_thermal/parameters/enabled 1
     write /sys/module/msm_thermal/core_control/enabled 1
+    start qcamerasvr
 
     # Vibrations
     chown system system /sys/devices/virtual/timed_output/vibrator/enable
@@ -1286,31 +1287,40 @@ on boot
 
 # Services begin here
 
-service adsprpcd /vendor/bin/adsprpcd
+service adsprpcd /system/vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service qcamerasvr /vendor/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
+    writepid /dev/cpuset/camera-daemon/tasks
 
-    writepid /dev/cpuset/system-background/tasks
+service sensors /system/vendor/bin/sensors.qcom
+    class late_start
+    user root
+    group root
+    disabled
 
-service qseecomd /vendor/bin/qseecomd
+on property:ro.use_data_netmgrd=false
+    # netmgr not supported on specific target
+    stop netmgrd
+
+service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
     disabled
 
-service mpdecision /vendor/bin/mpdecision --avg_comp
+service mpdecision /system/vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
     disabled
 
-service thermal-engine /vendor/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
     socket thermal-send-client stream 0666 system system
@@ -1318,7 +1328,7 @@ service thermal-engine /vendor/bin/thermal-engine
     socket thermal-recv-passive-client stream 0666 system system
     group root
 
-service timekeep /vendor/bin/timekeep restore
+service timekeep /system/vendor/bin/timekeep restore
     class late_start
     user root
     group root
@@ -1329,37 +1339,37 @@ service audiod /system/bin/audiod
     user system
     group system
 
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
 
-service rfs_access /vendor/bin/rfs_access
+service rfs_access /system/vendor/bin/rfs_access
     class core
     user system
     group system net_raw
 
-service qmuxd /vendor/bin/qmuxd
+service qmuxd /system/vendor/bin/qmuxd
     class core
     user root
     group radio audio bluetooth gps oem_2950 log
     writepid /dev/cpuset/system-background/tasks
 
-service netmgrd /vendor/bin/netmgrd
+service netmgrd /system/vendor/bin/netmgrd
     class main
     writepid /dev/cpuset/system-background/tasks
 
-service mdm_helper /vendor/bin/mdm_helper
+service mdm_helper /system/vendor/bin/mdm_helper
     class core
     user root
     group root system radio oem_2950 wakelock
     onrestart setprop ro.service.mdm_helper_restarted "true"
 
-service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
+service mdm_helper_proxy /system/vendor/bin/mdm_helper_proxy
     class core
     disabled
 
-service bridgemgrd /vendor/bin/bridgemgrd
+service bridgemgrd /system/vendor/bin/bridgemgrd
     class late_start
     user radio
     group radio oem_2950
@@ -1382,7 +1392,7 @@ on property:sys.qseecomd.enable=true
 on property:ro.mdm_helper_proxy_req=true
     start mdm_helper_proxy
 
-service wpa_supplicant  /vendor/bin/hw/wpa_supplicant \
+service wpa_supplicant  /system/vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -O/data/misc/wifi/sockets \
@@ -1394,16 +1404,16 @@ service wpa_supplicant  /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service olsrd /vendor/bin/olsrd -f /etc/wifi/olsrd.conf
+service olsrd /system/vendor/bin/olsrd -f /etc/wifi/olsrd.conf
     class main
     disabled
 
-service dhcpcd_bt-pan /vendor/bin/dhcpcd -BKLG
+service dhcpcd_bt-pan /system/vendor/bin/dhcpcd -BKLG
     class late_start
     disabled
     oneshot
 
-service loc_launcher /vendor/bin/loc_launcher
+service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet diag wifi
