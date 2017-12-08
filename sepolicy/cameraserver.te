@@ -1,1 +1,5 @@
 allow cameraserver cameraserver_exec:file r_file_perms;
+allow cameraserver system_data_file:sock_file { write };
+allow cameraserver socket_device:sock_file { write };
+allow cameraserver sysfs_camera:dir { search };
+allow cameraserver sysfs_camera:file { open read };
