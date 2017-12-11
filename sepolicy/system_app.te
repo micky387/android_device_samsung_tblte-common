@@ -1,3 +1,4 @@
 # >neverallow< allow system_app system_data_file:file write;
 
 allow system_app timekeep_prop:file { getattr open read };
+allow system_app timekeep_exec:file { getattr open read };
