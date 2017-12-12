@@ -94,6 +94,9 @@ TARGET_KERNEL_SOURCE := kernel/samsung/apq8084
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/lineagehw
+
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
