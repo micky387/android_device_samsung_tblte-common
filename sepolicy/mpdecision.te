@@ -1,9 +1,16 @@
+binder_use(mpdecision)
+
+type_transition mpdecision socket_device:sock_file mpctl_socket;
+type_transition mpdecision system_data_file:file mpctl_data_file;
+
 allow mpdecision socket_device:dir rw_dir_perms;
 allow mpdecision socket_device:sock_file { write create setattr };
 # >neverallow< allow mpdecision system_data_file:file { create read append open };
+allow mpdecision system_file:file execmod;
 allow mpdecision system_data_file:sock_file { create unlink write setattr };
 allow mpdecision system_data_file:dir { add_name create remove_name write };
 allow mpdecision thermal_socket:sock_file write;
 allow mpdecision thermal-engine:unix_stream_socket connectto;
 allow mpdecision sysfs:file { open read };
+allow mpdecision cgroup:file { open read };
 # >neverallow< allow mpdecision self:capability sys_ptrace;

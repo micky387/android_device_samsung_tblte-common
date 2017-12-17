@@ -1,0 +1,5 @@
+allow hal_camera_default cameraserver_exec:file { execute getattr open read };
+allow hal_camera_default system_data_file:sock_file rw_file_perms;
+allow hal_camera_default sysfs_camera:file { open read };
+allow hal_camera_default sysfs_camera:dir { search };
+allow hal_camera_default socket_device:sock_file rw_file_perms;

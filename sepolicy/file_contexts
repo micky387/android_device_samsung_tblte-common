@@ -30,6 +30,7 @@
 /(vendor|system/vendor)/bin/macloader                                   u:object_r:macloader_exec:s0
 
 # Mdm
+/system/bin/ks                                                          u:object_r:mdm_helper_exec:s0
 /(vendor|system/vendor)/bin/qcks                                        u:object_r:mdm_helper_exec:s0
 /(vendor|system/vendor)/bin/efks                                        u:object_r:mdm_helper_exec:s0
 
@@ -67,12 +68,15 @@
 /sys/devices/virtual/graphics/fb1/vendor_name          -- u:object_r:surfaceflinger_sysfs:s0
 
 # Sysfs files used by gralloc hal
-/sys/devices/virtual/graphics/fb[0-1]/msm_.*        u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/virtual/graphics/fb[0-2]/msm_.*        u:object_r:sysfs_hal_gralloc:s0
 /sys/devices/fd900000.qcom,mdss_mdp/caps            u:object_r:sysfs_hal_gralloc:s0
 
 # Sysfs entry for the RmNet function driver
 /sys/class/android_usb/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0
 /sys/devices/virtual/android_usb/android0/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0 
+
+# SysFs file for mdnie
+/sys/devices/virtual/mdnie/mdnie/scenario               u:object_r:sysfs_mdnie_writable:s0
 
 # TimeKeep
 /(vendor|system/vendor)/bin/timekeep                    u:object_r:timekeep_exec:s0
