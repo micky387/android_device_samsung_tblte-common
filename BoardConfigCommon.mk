@@ -17,7 +17,7 @@
 # inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
-LOCAL_PATH := device/samsung/tblte-common
+DEVICE_PATH := device/samsung/tblte-common
 
 # Architecture
 TARGET_CPU_VARIANT := krait
@@ -35,8 +35,8 @@ USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_CUSTOM_BT_CONFIG := $(LOCAL_PATH)/bluetooth/vnd_tblte.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(DEVICE_PATH)/bluetooth/vnd_tblte.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
 # Bootloader
@@ -54,7 +54,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Config Fs
-TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -73,10 +73,10 @@ TARGET_USES_HWC2 := true
 TARGET_USES_HWC2ON1ADAPTER := true
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG := true
@@ -97,7 +97,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/apq8084
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Lineage Hardware
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/lineagehw/
+BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/lineagehw/
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -134,7 +134,7 @@ TARGET_RIL_VARIANT := caf
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tblte-common/recovery/recovery_keys.c
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.full
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
 LZMA_RAMDISK_TARGETS := recovery
 
 # Render
