@@ -250,6 +250,7 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
     NfcNci \
+    nfc_nci.apq8084 \
     libnfc-nci \
     Tag
 
