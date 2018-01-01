@@ -123,7 +123,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     camera.device@1.0-impl \
     camera.apq8084 \
-    libxml2
+    libxml2 \
+    Snap
 
 # Charger
 PRODUCT_PACKAGES += \
