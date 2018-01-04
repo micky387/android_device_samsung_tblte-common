@@ -457,23 +457,6 @@ on boot
     # Default to 90% vibrator strength
     write /sys/devices/virtual/timed_output/vibrator/intensity 5000
 
-    # update foreground cpuset now that processors are up
-    # reserve CPU 3 for the top app and camera-daemon
-    write /dev/cpuset/foreground/cpus 0-2
-    write /dev/cpuset/foreground/boost/cpus 0-2
-    write /dev/cpuset/background/cpus 0
-    write /dev/cpuset/system-background/cpus 0-1
-    write /dev/cpuset/top-app/cpus 0-3
-    write /dev/cpuset/camera-daemon/cpus 0-3
-    
-    # add a cpuset for the camera daemon
-    # we want all the cores for camera
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/mems 0
-    chown system system /dev/cpuset/camera-daemon
-    chown system system /dev/cpuset/camera-daemon/tasks
-    chmod 0664 /dev/cpuset/camera-daemon/tasks
-
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt /proc/bluetooth/sleep/proto
@@ -1294,7 +1277,6 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
-    writepid /dev/cpuset/camera-daemon/tasks
 
 service sensors /system/vendor/bin/sensors.qcom
     class late_start
@@ -1351,11 +1333,9 @@ service qmuxd /system/vendor/bin/qmuxd
     class core
     user root
     group radio audio bluetooth gps oem_2950 log
-    writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/vendor/bin/netmgrd
     class main
-    writepid /dev/cpuset/system-background/tasks
 
 service mdm_helper /system/vendor/bin/mdm_helper
     class core
@@ -1415,7 +1395,6 @@ service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet diag wifi
-    writepid /dev/cpuset/system-background/tasks
 
 service macloader /system/vendor/bin/macloader
     class main
