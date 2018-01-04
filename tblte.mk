@@ -173,10 +173,10 @@ PRODUCT_PACKAGES += \
 
 # GPS config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/flp.conf:/system/vendor/etc/flp.conf \
-    $(LOCAL_PATH)/configs/gps.conf:/system/vendor/etc/gps.conf \
-    $(LOCAL_PATH)/configs/izat.conf:/system/vendor/etc/izat.conf \
-    $(LOCAL_PATH)/configs/sap.conf:/system/vendor/etc/sap.conf
+    $(LOCAL_PATH)/configs/flp.conf:/system/etc/flp.conf \
+    $(LOCAL_PATH)/configs/gps.conf:/system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/izat.conf:/system/etc/izat.conf \
+    $(LOCAL_PATH)/configs/sap.conf:/system/etc/sap.conf
 
 # IPv6 tethering
 PRODUCT_PACKAGES += \
@@ -231,12 +231,12 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/vendor/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/vendor/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/vendor/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/vendor/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/vendor/etc/media_codecs_google_video.xml
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Netutils
 PRODUCT_PACKAGES += \
@@ -256,9 +256,9 @@ PRODUCT_PACKAGES += \
 
 # NFC config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/libnfc-sec.conf:system/vendor/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/libnfc-sec-hal.conf:system/vendor/etc/libnfc-sec-hal.conf \
-    $(LOCAL_PATH)/configs/nfcee_access.xml:system/vendor/etc/nfcee_access.xml
+    $(LOCAL_PATH)/configs/libnfc-sec.conf:system/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/configs/libnfc-sec-hal.conf:system/etc/libnfc-sec-hal.conf \
+    $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -278,7 +278,7 @@ PRODUCT_PACKAGES += \
     libshim_cutils_atomic
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/spn-conf.xml:system/vendor/etc/spn-conf.xml
+    $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -306,7 +306,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:/system/vendor/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:/system/etc/thermal-engine.conf
 
 # Torch
 PRODUCT_PACKAGES += \
