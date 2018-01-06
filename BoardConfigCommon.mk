@@ -120,7 +120,6 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 QCOM_BOARD_PLATFORMS += apq8084
 TARGET_BOARD_PLATFORM := apq8084
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno420
-USE_CLANG_PLATFORM_BUILD := true
 
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
@@ -141,6 +140,9 @@ LZMA_RAMDISK_TARGETS := recovery
 # Render
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
+
+# SDClang
+TARGET_USE_SDCLANG := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
