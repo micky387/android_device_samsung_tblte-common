@@ -17,7 +17,7 @@ etc/Speaker_cal.acdb
 lib/libcsd-client.so:vendor/lib/libcsd-client.so
 # Need This lib for call audio .Import it from previous firmware
 -lib/libdetectmodem.so:vendor/lib/libdetectmodem.so|87ff3c5d21eef08ef977aabd3f56a344
-lib/libmysound.so:vendor/lib/libmysound.so
+lib/libmysound.so:vendor/lib/soundfx/libmysound.so
 lib/libssaudio-client.so:vendor/lib/libssaudio-client.so
 lib/hw/audio.tms.default.so:vendor/lib/hw/audio.tms.default.so
 vendor/lib/libacdbloader.so
