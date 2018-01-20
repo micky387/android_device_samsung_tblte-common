@@ -40,7 +40,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
     debug.gralloc.enable_fb_ubwc=1 \
-    debug.hwui.use_buffer_age=false \
     persist.hwc.enable_vds \
     sdm.perf_hint_window=50 \
     ro.opengles.version=196609 \
